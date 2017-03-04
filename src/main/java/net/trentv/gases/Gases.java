@@ -19,7 +19,7 @@ public class Gases
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		System.out.println(MODID + " initialized!");
+		logger = event.getModLog();
 	}
 
 	@EventHandler
@@ -31,6 +31,6 @@ public class Gases
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-
+		logger.info("Glenn's Gases initialized");
 	}
 }
