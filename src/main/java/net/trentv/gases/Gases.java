@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.trentv.gases.init.GasesObjects;
 
 @Mod(modid = Gases.MODID, version = Gases.VERSION, acceptedMinecraftVersions = "1.10.2", dependencies = "required-after:gasesframework")
 public class Gases
@@ -20,6 +21,7 @@ public class Gases
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		logger = event.getModLog();
+		GasesObjects.init();
 	}
 
 	@EventHandler
