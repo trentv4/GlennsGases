@@ -15,8 +15,13 @@ public class GasesObjects
 
 	public static void init()
 	{
-		GFRegistrationAPI.registerGasType(NATURAL_GAS, new ResourceLocation(Gases.MODID, "gas_" + NATURAL_GAS.name));
-		GFRegistrationAPI.registerGasType(RED_GAS, new ResourceLocation(Gases.MODID, "gas_" + RED_GAS.name));
-		GFRegistrationAPI.registerGasType(COAL_DUST, new ResourceLocation(Gases.MODID, "gas_" + COAL_DUST.name));
+		registerGas(NATURAL_GAS);
+		registerGas(RED_GAS);
+		registerGas(COAL_DUST);
+	}
+	
+	private static void registerGas(GasType in)
+	{
+		GFRegistrationAPI.registerGasType(in, new ResourceLocation(Gases.MODID, "gas_" + in.name));
 	}
 }

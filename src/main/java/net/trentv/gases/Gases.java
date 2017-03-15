@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Logger;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -17,6 +18,9 @@ public class Gases
 
 	public static Logger logger;
 
+	@SidedProxy(clientSide = "", serverSide = "")
+	public static CommonProxy proxy;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
