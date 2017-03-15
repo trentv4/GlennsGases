@@ -18,7 +18,7 @@ public class Gases
 
 	public static Logger logger;
 
-	@SidedProxy(clientSide = "", serverSide = "")
+	@SidedProxy(clientSide = "net.trentv.gases.client.ClientProxy", serverSide = "net.trentv.gases.server.ServerProxy")
 	public static CommonProxy proxy;
 	
 	@EventHandler
@@ -26,6 +26,9 @@ public class Gases
 	{
 		logger = event.getModLog();
 		GasesObjects.init();
+
+		proxy.registerRenderers();
+		proxy.registerEventHandlers();
 	}
 
 	@EventHandler
