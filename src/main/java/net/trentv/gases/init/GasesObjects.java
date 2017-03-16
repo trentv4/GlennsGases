@@ -12,12 +12,14 @@ public class GasesObjects
 	public static final GasType NATURAL_GAS = new GasType("natural", 0x6F7F6F, 2, 1, Combustibility.FLAMMABLE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType RED_GAS = new GasType("red", 0x7F0000, 2, -1, Combustibility.EXPLOSIVE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType COAL_DUST = new GasType("coal_dust", 0x000000, 2, -1, Combustibility.EXPLOSIVE).setCreativeTab(GasesFramework.CREATIVE_TAB);
+	public static final GasType STEAM = new GasType("steam", 0xFFFFFF, 2, 1, Combustibility.EXPLOSIVE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	public static void init()
 	{
 		registerGas(NATURAL_GAS);
 		registerGas(RED_GAS);
 		registerGas(COAL_DUST);
+		registerGas(STEAM);
 	}
 	
 	private static void registerGas(GasType in)
