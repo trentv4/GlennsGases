@@ -18,7 +18,7 @@ public class GasesObjects
 	public static final GasType RED_GAS = new GasType("red", 0x7F0000, 2, -1, Combustibility.EXPLOSIVE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType COAL_DUST = new GasType("coal_dust", 0x000000, 2, 0, Combustibility.EXPLOSIVE).setCohesion(8).setDissipation(2, 4).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType STEAM = new GasType("steam", 0xFFFFFF, 2, 1, Combustibility.EXPLOSIVE).setCohesion(2).setDissipation(4, 2).setCreativeTab(GasesFramework.CREATIVE_TAB);
-	public static final GasType IOCALFAEUS = new GasTypeLightSensitive("iocalfaeus", 0xFFFFFF, 2, 1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
+	public static final GasType IOCALFAEUS = new GasTypeLightSensitive("iocalfaeus", 0xFFFFFF, 2, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	public static final Block HEATED_STONE = new BlockHeatedStone();
 	

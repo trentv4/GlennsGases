@@ -16,7 +16,11 @@ import net.trentv.gasesframework.GasesFramework;
 public class BlockHeatedStone extends Block
 {
 	public static final PropertyInteger HEAT = PropertyInteger.create("heat", 0, 9);
-
+	public static final PropertyInteger REFINED = PropertyInteger.create("refined", 0, 2);
+	// unrefined: 0
+	// refined: 1
+	// ruined: 2
+	
 	public BlockHeatedStone()
 	{
 		super(Material.ROCK);
@@ -24,20 +28,20 @@ public class BlockHeatedStone extends Block
 		setResistance(10.0F);
 		setSoundType(SoundType.STONE);
 		setRegistryName(new ResourceLocation(Gases.MODID, "heated_stone"));
-		setUnlocalizedName("warmStone");
+		setUnlocalizedName("heated_stone");
 		setCreativeTab(GasesFramework.CREATIVE_TAB);
-		this.setDefaultState(blockState.getBaseState().withProperty(HEAT, 9));
+		this.setDefaultState(blockState.getBaseState().withProperty(HEAT, 0).withProperty(REFINED, 0));
 	}
 	
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
-		worldIn.setBlockState(pos, getDefaultState().withProperty(HEAT, 9));
+		world.setBlockState(pos, state.withProperty(HEAT, 6).withProperty(REFINED, 1)); // for testing purposes
 	}
 
 	@Override
 	public BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, HEAT);
+		return new BlockStateContainer(this, HEAT, REFINED);
 	}
 
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos)
