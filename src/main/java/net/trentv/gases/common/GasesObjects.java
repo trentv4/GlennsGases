@@ -1,4 +1,4 @@
-package net.trentv.gases.init;
+package net.trentv.gases.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
@@ -9,8 +9,8 @@ import net.trentv.gases.common.block.BlockHeatedStone;
 import net.trentv.gases.common.gastype.GasTypeLightSensitive;
 import net.trentv.gasesframework.GasesFramework;
 import net.trentv.gasesframework.api.Combustibility;
+import net.trentv.gasesframework.api.GFRegistrationAPI;
 import net.trentv.gasesframework.api.GasType;
-import net.trentv.gasesframework.impl.GFRegistrationAPI;
 
 public class GasesObjects
 {

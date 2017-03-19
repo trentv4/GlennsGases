@@ -4,8 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
-import net.trentv.gases.CommonProxy;
-import net.trentv.gases.init.GasesObjects;
+import net.trentv.gases.common.CommonProxy;
+import net.trentv.gases.common.GasesObjects;
 
 public class ClientProxy extends CommonProxy
 {

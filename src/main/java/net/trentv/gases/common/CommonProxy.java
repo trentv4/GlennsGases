@@ -1,7 +1,6 @@
-package net.trentv.gases;
+package net.trentv.gases.common;
 
 import net.minecraftforge.common.MinecraftForge;
-import net.trentv.gases.CommonEvents;
 
 public abstract class CommonProxy
 {

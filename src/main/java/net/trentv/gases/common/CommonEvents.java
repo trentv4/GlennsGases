@@ -1,10 +1,9 @@
-package net.trentv.gases;
+package net.trentv.gases.common;
 
 import net.minecraft.init.Blocks;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.trentv.gases.init.GasesObjects;
-import net.trentv.gasesframework.impl.GFManipulationAPI;
+import net.trentv.gasesframework.api.GFManipulationAPI;
 
 public class CommonEvents
 {
