@@ -55,6 +55,11 @@
                     "all":"gases:block/heated_stone_7"
                 }
             }
+        },
+        "refined": {
+        	"0": {},
+        	"1": {},
+        	"2": {}
         }
     }
 }
