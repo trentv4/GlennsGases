@@ -70,10 +70,6 @@ public class BlockHeated extends Block
 	
 	public void heat(World world, IBlockState state, BlockPos p, BlockHeated r)
 	{
-		PropertyInteger HEAT = BlockHeated.HEAT;
-		PropertyInteger REFINED = BlockHeated.REFINED;
-		//so the code is shorter. remove when done developing this
-
 		if(state.getBlock() == r.original)
 		{
 			world.setBlockState(p, r.getDefaultState().withProperty(HEAT, 0).withProperty(REFINED, 0));
