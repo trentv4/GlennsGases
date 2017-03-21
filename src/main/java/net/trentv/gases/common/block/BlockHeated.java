@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -65,6 +66,46 @@ public class BlockHeated extends Block
 			}
 		}
 		world.scheduleBlockUpdate(pos, this, tickRate, 1);
+	}
+	
+	public void heat(World world, IBlockState state, BlockPos p, BlockHeated r)
+	{
+		PropertyInteger HEAT = BlockHeated.HEAT;
+		PropertyInteger REFINED = BlockHeated.REFINED;
+		//so the code is shorter. remove when done developing this
+
+		if(state.getBlock() == r.original)
+		{
+			world.setBlockState(p, r.getDefaultState().withProperty(HEAT, 0).withProperty(REFINED, 0));
+		}
+		else if(state.getBlock() == r)
+		{
+			int heat = state.getValue(HEAT);
+			if(heat < 5)
+			{
+				world.setBlockState(p, state.withProperty(HEAT, heat + 1));
+			}
+			else if(heat == 5)
+			{
+				int addAmount = (int) Math.ceil(Math.random() * 3);
+				if(addAmount == 1)
+				{
+					world.setBlockState(p, state.withProperty(HEAT, heat + addAmount).withProperty(REFINED, 1));
+				}
+				else
+				{
+					world.setBlockState(p, state.withProperty(HEAT, heat + addAmount).withProperty(REFINED, 2));
+				}
+			}
+			else if(heat >= 6 & heat <= 8)
+			{
+				world.setBlockState(p, state.withProperty(HEAT, 9).withProperty(REFINED, 2));
+			}
+			else if(heat == 9)
+			{
+				world.setBlockState(p, Blocks.LAVA.getDefaultState());
+			}
+		}
 	}
 
 	@Override
