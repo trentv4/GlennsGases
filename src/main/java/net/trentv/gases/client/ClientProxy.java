@@ -12,7 +12,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderers()
 	{
-		setModel(GasesObjects.HEATED_STONE);
+		setModel(GasesObjects.HEATED_IRON);
 	}
 	
 	private void setModel(Block obj)

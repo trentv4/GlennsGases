@@ -42,7 +42,7 @@ public class GasTypeLightSensitive extends GasType
 								BlockPos pos = new BlockPos(p.getX() + x, p.getY() + y, p.getZ() + z);
 								IBlockState s = world.getBlockState(pos);
 								Block a = s.getBlock();
-								if(a == Blocks.STONE || a == GasesObjects.HEATED_STONE)
+								if(a == Blocks.IRON_ORE || a == GasesObjects.HEATED_IRON)
 								{
 									heat(world, world.getBlockState(pos), pos);
 								}
@@ -61,16 +61,16 @@ public class GasTypeLightSensitive extends GasType
 		PropertyInteger REFINED = BlockHeatedStone.REFINED;
 		//so the code is shorter. remove when done developing this
 
-		if(state.getBlock() == Blocks.STONE)
+		if(state.getBlock() == Blocks.IRON_ORE)
 		{
-			world.setBlockState(p, GasesObjects.HEATED_STONE.getDefaultState().withProperty(HEAT, 0));
+			world.setBlockState(p, GasesObjects.HEATED_IRON.getDefaultState().withProperty(HEAT, 0).withProperty(REFINED, 0));
 		}
-		else if(state.getBlock() == GasesObjects.HEATED_STONE)
+		else if(state.getBlock() == GasesObjects.HEATED_IRON)
 		{
 			int heat = state.getValue(HEAT);
 			if(heat < 5)
 			{
-				world.setBlockState(p, state.withProperty(HEAT, heat + 1).withProperty(REFINED, 0));
+				world.setBlockState(p, state.withProperty(HEAT, heat + 1));
 			}
 			else if(heat == 5)
 			{

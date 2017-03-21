@@ -1,6 +1,7 @@
 package net.trentv.gases.common;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -20,7 +21,7 @@ public class GasesObjects
 	public static final GasType STEAM = new GasType("steam", 0xFFFFFF, 2, 1, Combustibility.EXPLOSIVE).setCohesion(2).setDissipation(4, 2).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType IOCALFAEUS = new GasTypeLightSensitive("iocalfaeus", 0xFFFFFF, 2, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
-	public static final Block HEATED_STONE = new BlockHeatedStone();
+	public static final Block HEATED_IRON = new BlockHeatedStone(Blocks.IRON_ORE, Blocks.IRON_BLOCK, Blocks.STONE);
 	
 	public static void init()
 	{
@@ -30,7 +31,7 @@ public class GasesObjects
 		registerGas(STEAM);
 		registerGas(IOCALFAEUS);
 		
-		registerBlock(HEATED_STONE);
+		registerBlock(HEATED_IRON);
 	}
 	
 	private static void registerBlock(Block in)
