@@ -27,7 +27,7 @@ public class GasesObjects
 	public static final GasType STEAM = new GasType("steam", 0xFFFFFF, 2, 1, Combustibility.EXPLOSIVE).setCohesion(2).setDissipation(4, 2).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType IOCALFAEUS = new GasTypeLightSensitive("iocalfaeus", 0xFFFFFF, 2, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
-	public static final BlockHeated HEATED_IRON = new BlockHeated(Blocks.IRON_ORE, Blocks.IRON_BLOCK, Blocks.STONE, "iron");
+	public static final BlockHeated HEATED_IRON = new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron");
 	
 	public static void init()
 	{
@@ -49,7 +49,7 @@ public class GasesObjects
 	public static void registerHeatedRecipe(BlockHeated block)
 	{
 		registerBlock(block);
-		heatedRecipe.put(block.original, block);
+		heatedRecipe.put(block.original.getBlock(), block);
 	}
 	
 	private static void registerBlock(Block in)

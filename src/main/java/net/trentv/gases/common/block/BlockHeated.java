@@ -24,11 +24,11 @@ public class BlockHeated extends Block
 	// unrefined: 0
 	// refined: 1
 	// ruined: 2
-	public final Block original;
-	public final Block refined;
-	public final Block ruined;
+	public final IBlockState original;
+	public final IBlockState refined;
+	public final IBlockState ruined;
 	
-	public BlockHeated(Block original, Block refined, Block ruined, String id)
+	public BlockHeated(IBlockState original, IBlockState refined, IBlockState ruined, String id)
 	{
 		super(Material.ROCK);
 		setHardness(1.5F);
@@ -60,9 +60,9 @@ public class BlockHeated extends Block
 		{
 			switch(ref)
 			{
-				case 0: world.setBlockState(pos, original.getDefaultState()); break;
-				case 1: world.setBlockState(pos, refined.getDefaultState()); break;
-				case 2: world.setBlockState(pos, ruined.getDefaultState()); break;
+				case 0: world.setBlockState(pos, original); break;
+				case 1: world.setBlockState(pos, refined); break;
+				case 2: world.setBlockState(pos, ruined); break;
 			}
 		}
 		world.scheduleBlockUpdate(pos, this, tickRate, 1);
