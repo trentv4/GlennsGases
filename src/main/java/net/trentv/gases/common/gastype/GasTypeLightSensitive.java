@@ -7,7 +7,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.trentv.gases.common.GasesObjects;
-import net.trentv.gases.common.block.BlockHeatedStone;
+import net.trentv.gases.common.block.BlockHeated;
 import net.trentv.gasesframework.api.Combustibility;
 import net.trentv.gasesframework.api.GasType;
 
@@ -42,9 +42,14 @@ public class GasTypeLightSensitive extends GasType
 								BlockPos pos = new BlockPos(p.getX() + x, p.getY() + y, p.getZ() + z);
 								IBlockState s = world.getBlockState(pos);
 								Block a = s.getBlock();
-								if(a == Blocks.IRON_ORE || a == GasesObjects.HEATED_IRON)
+								BlockHeated r = GasesObjects.getHeated(a);
+								if(a instanceof BlockHeated)
 								{
-									heat(world, world.getBlockState(pos), pos);
+									heat(world, world.getBlockState(pos), pos, (BlockHeated) a);
+								}
+								if(r != null)
+								{
+									heat(world, world.getBlockState(pos), pos, r);
 								}
 							}
 						}
@@ -55,17 +60,17 @@ public class GasTypeLightSensitive extends GasType
 		return true;
 	}
 	
-	private void heat(World world, IBlockState state, BlockPos p)
+	private void heat(World world, IBlockState state, BlockPos p, BlockHeated r)
 	{
-		PropertyInteger HEAT = BlockHeatedStone.HEAT;
-		PropertyInteger REFINED = BlockHeatedStone.REFINED;
+		PropertyInteger HEAT = BlockHeated.HEAT;
+		PropertyInteger REFINED = BlockHeated.REFINED;
 		//so the code is shorter. remove when done developing this
 
-		if(state.getBlock() == Blocks.IRON_ORE)
+		if(state.getBlock() == r.original)
 		{
-			world.setBlockState(p, GasesObjects.HEATED_IRON.getDefaultState().withProperty(HEAT, 0).withProperty(REFINED, 0));
+			world.setBlockState(p, r.getDefaultState().withProperty(HEAT, 0).withProperty(REFINED, 0));
 		}
-		else if(state.getBlock() == GasesObjects.HEATED_IRON)
+		else if(state.getBlock() == r)
 		{
 			int heat = state.getValue(HEAT);
 			if(heat < 5)

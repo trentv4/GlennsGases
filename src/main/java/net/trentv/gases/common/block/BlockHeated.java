@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.trentv.gases.Gases;
 import net.trentv.gasesframework.GasesFramework;
 
-public class BlockHeatedStone extends Block
+public class BlockHeated extends Block
 {
 	private static final int tickRate = 100;
 	public static final PropertyInteger HEAT = PropertyInteger.create("heat", 0, 9);
@@ -27,14 +27,14 @@ public class BlockHeatedStone extends Block
 	public final Block refined;
 	public final Block ruined;
 	
-	public BlockHeatedStone(Block original, Block refined, Block ruined)
+	public BlockHeated(Block original, Block refined, Block ruined, String id)
 	{
 		super(Material.ROCK);
 		setHardness(1.5F);
 		setResistance(10.0F);
 		setSoundType(SoundType.STONE);
-		setRegistryName(new ResourceLocation(Gases.MODID, "heated_stone"));
-		setUnlocalizedName("heated_stone");
+		setRegistryName(new ResourceLocation(Gases.MODID, "heated_" + id));
+		setUnlocalizedName("heated_" + id);
 		setCreativeTab(GasesFramework.CREATIVE_TAB);
 		this.original = original;
 		this.refined = refined;
