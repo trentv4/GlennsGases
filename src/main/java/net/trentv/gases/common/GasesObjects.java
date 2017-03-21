@@ -28,6 +28,11 @@ public class GasesObjects
 	public static final GasType IOCALFAEUS = new GasTypeLightSensitive("iocalfaeus", 0xFFFFFF, 2, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	public static final BlockHeated HEATED_IRON = new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron");
+	public static final BlockHeated HEATED_DIAMOND = new BlockHeated(Blocks.DIAMOND_ORE.getDefaultState(), Blocks.DIAMOND_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "diamond");
+	public static final BlockHeated HEATED_GOLD = new BlockHeated(Blocks.GOLD_ORE.getDefaultState(), Blocks.GOLD_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "gold");
+	public static final BlockHeated HEATED_REDSTONE = new BlockHeated(Blocks.REDSTONE_ORE.getDefaultState(), Blocks.REDSTONE_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "redstone");
+	public static final BlockHeated HEATED_LAPIS = new BlockHeated(Blocks.LAPIS_ORE.getDefaultState(), Blocks.LAPIS_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "lapis");
+	public static final BlockHeated HEATED_STONE = new BlockHeated(Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), "stone");
 	
 	public static void init()
 	{
@@ -38,6 +43,11 @@ public class GasesObjects
 		registerGas(IOCALFAEUS);
 		
 		registerHeatedRecipe(HEATED_IRON);
+		registerHeatedRecipe(HEATED_DIAMOND);
+		registerHeatedRecipe(HEATED_GOLD);
+		registerHeatedRecipe(HEATED_REDSTONE);
+		registerHeatedRecipe(HEATED_LAPIS);
+		registerHeatedRecipe(HEATED_STONE);
 	}
 
 	@Nullable

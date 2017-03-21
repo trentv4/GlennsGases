@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -14,16 +15,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.trentv.gases.Gases;
+import net.trentv.gases.common.RefinedState;
 import net.trentv.gasesframework.GasesFramework;
 
 public class BlockHeated extends Block
 {
 	private static final int tickRate = 100;
 	public static final PropertyInteger HEAT = PropertyInteger.create("heat", 0, 9);
-	public static final PropertyInteger REFINED = PropertyInteger.create("refined", 0, 2);
-	// unrefined: 0
-	// refined: 1
-	// ruined: 2
+	public static final PropertyEnum<RefinedState> REFINED = PropertyEnum.create("refined", RefinedState.class);
+
 	public final IBlockState original;
 	public final IBlockState refined;
 	public final IBlockState ruined;
@@ -40,7 +40,7 @@ public class BlockHeated extends Block
 		this.original = original;
 		this.refined = refined;
 		this.ruined = ruined;
-		this.setDefaultState(blockState.getBaseState().withProperty(HEAT, 0).withProperty(REFINED, 0));
+		this.setDefaultState(blockState.getBaseState().withProperty(HEAT, 0).withProperty(REFINED, RefinedState.UNREFINED));
 	}
 	
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
@@ -51,7 +51,7 @@ public class BlockHeated extends Block
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random random)
 	{
 		int level = state.getValue(HEAT);
-		int ref = state.getValue(REFINED);
+		RefinedState ref = state.getValue(REFINED);
 		if(level > 1)
 		{
 			world.setBlockState(pos, state.withProperty(HEAT, level - 1));
@@ -60,9 +60,9 @@ public class BlockHeated extends Block
 		{
 			switch(ref)
 			{
-				case 0: world.setBlockState(pos, original); break;
-				case 1: world.setBlockState(pos, refined); break;
-				case 2: world.setBlockState(pos, ruined); break;
+				case UNREFINED: world.setBlockState(pos, original); break;
+				case REFINED: world.setBlockState(pos, refined); break;
+				case RUINED: world.setBlockState(pos, ruined); break;
 			}
 		}
 		world.scheduleBlockUpdate(pos, this, tickRate, 1);
@@ -72,7 +72,7 @@ public class BlockHeated extends Block
 	{
 		if(state.getBlock() == r.original)
 		{
-			world.setBlockState(p, r.getDefaultState().withProperty(HEAT, 0).withProperty(REFINED, 0));
+			world.setBlockState(p, r.getDefaultState().withProperty(HEAT, 0).withProperty(REFINED, RefinedState.UNREFINED));
 		}
 		else if(state.getBlock() == r)
 		{
@@ -86,16 +86,16 @@ public class BlockHeated extends Block
 				int addAmount = (int) Math.ceil(Math.random() * 3);
 				if(addAmount == 1)
 				{
-					world.setBlockState(p, state.withProperty(HEAT, heat + addAmount).withProperty(REFINED, 1));
+					world.setBlockState(p, state.withProperty(HEAT, heat + addAmount).withProperty(REFINED, RefinedState.REFINED));
 				}
 				else
 				{
-					world.setBlockState(p, state.withProperty(HEAT, heat + addAmount).withProperty(REFINED, 2));
+					world.setBlockState(p, state.withProperty(HEAT, heat + addAmount).withProperty(REFINED, RefinedState.RUINED));
 				}
 			}
 			else if(heat >= 6 & heat <= 8)
 			{
-				world.setBlockState(p, state.withProperty(HEAT, 9).withProperty(REFINED, 2));
+				world.setBlockState(p, state.withProperty(HEAT, 9).withProperty(REFINED, RefinedState.RUINED));
 			}
 			else if(heat == 9)
 			{
