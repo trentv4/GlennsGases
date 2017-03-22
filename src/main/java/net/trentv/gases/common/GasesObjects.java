@@ -10,6 +10,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.trentv.gases.Gases;
+import net.trentv.gases.client.GasesModelLoader;
 import net.trentv.gases.common.block.BlockHeated;
 import net.trentv.gases.common.gastype.GasTypeLightSensitive;
 import net.trentv.gasesframework.GasesFramework;
@@ -59,6 +60,7 @@ public class GasesObjects
 	public static void registerHeatedRecipe(BlockHeated block)
 	{
 		registerBlock(block);
+		GasesModelLoader.registeredLocations.put(block.getRegistryName(), block);
 		heatedRecipe.put(block.original.getBlock(), block);
 	}
 	
