@@ -2,6 +2,7 @@ package net.trentv.gases;
 
 import org.apache.logging.log4j.Logger;
 
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -21,7 +22,9 @@ public class Gases
 
 	@SidedProxy(clientSide = "net.trentv.gases.client.ClientProxy", serverSide = "net.trentv.gases.server.ServerProxy")
 	public static CommonProxy proxy;
-	
+
+	public static DamageSourceSteamBurn damageSourceSteamBurn = new DamageSourceSteamBurn("steam_burn");
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -43,4 +46,14 @@ public class Gases
 	{
 		logger.info("Glenn's Gases initialized");
 	}
+	
+	private static class DamageSourceSteamBurn extends DamageSource
+	{
+		public DamageSourceSteamBurn(String damageTypeIn)
+		{
+			super(damageTypeIn);
+			this.setDamageBypassesArmor();
+		}
+	}
+
 }
