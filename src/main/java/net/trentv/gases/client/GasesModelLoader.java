@@ -36,7 +36,7 @@ public class GasesModelLoader implements ICustomModelLoader
 		BlockHeated a = registeredLocations.get(convert(res));
 		if ((res.getVariant().equals("inventory")))
 		{
-			return new ModelBlockHeated(7, a.original.getBlock().getRegistryName());
+			return new ModelBlockHeated(5, "block/heated/" + a.getRegistryName().getResourcePath());
 		}
 		else
 		{
@@ -46,10 +46,10 @@ public class GasesModelLoader implements ICustomModelLoader
 				if(s.contains("heat="))
 				{
 					int heat = (int) Integer.valueOf(s.replaceAll("heat=", ""));
-					return new ModelBlockHeated(heat, a.original.getBlock().getRegistryName());
+					return new ModelBlockHeated(heat, "block/heated/" + a.getRegistryName().getResourcePath());
 				}
 			}
-			return new ModelBlockHeated(7, a.original.getBlock().getRegistryName());
+			return new ModelBlockHeated(7, "block/heated/" + a.getRegistryName().getResourcePath());
 		}
 	}
 	

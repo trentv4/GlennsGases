@@ -32,19 +32,19 @@ public class ModelBlockHeated implements IModel
 	private FaceBakery bakery = new FaceBakery();
 	public ResourceLocation texture;
 
-	public ModelBlockHeated(int heat, ResourceLocation original)
+	public ModelBlockHeated(int heat, String original)
 	{
 		if(heat == 9)
 		{
-			texture = new ResourceLocation(Gases.MODID, "block/heated_stone_7");
+			texture = new ResourceLocation(Gases.MODID, original + "_7");
 		}
 		else if(heat > 5 && heat < 9)
 		{
-			texture = new ResourceLocation(Gases.MODID, "block/heated_stone_6_" + (heat - 6));
+			texture = new ResourceLocation(Gases.MODID, original + "_6_" + (heat - 6));
 		}
 		else if(heat < 6)
 		{
-			texture = new ResourceLocation(Gases.MODID, "block/heated_stone_" + heat);
+			texture = new ResourceLocation(Gases.MODID, original + "_" + heat);
 		}
 	}
 
