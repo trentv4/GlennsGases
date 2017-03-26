@@ -35,6 +35,7 @@ public class GasesObjects
 	public static final GasType IOCALFAEUS = new GasTypeLightSensitive("iocalfaeus", 0x5C2B77, 2, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType BLACK_DAMP = new GasTypeBlackDamp("black_damp", 0x000000, 2, 0, Combustibility.NONE).setTexture(new ResourceLocation(Gases.MODID, "block/black_damp"), false).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType VOID_GAS = new GasType("void", 0x222222, 2, -1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(damageSourceVoid, 8)).setCreativeTab(GasesFramework.CREATIVE_TAB);
+	public static final GasType NITROUS = new GasType("nitrous", 0x6F0000, 2, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	public static HashMap<Block, BlockHeated> heatedRecipe = new HashMap<Block, BlockHeated>();
 	public static final BlockHeated HEATED_IRON = new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron");
@@ -53,6 +54,7 @@ public class GasesObjects
 		registerGas(IOCALFAEUS);
 		registerGas(BLACK_DAMP);
 		registerGas(VOID_GAS);
+		registerGas(NITROUS);
 		
 		registerHeatedRecipe(HEATED_IRON);
 		registerHeatedRecipe(HEATED_DIAMOND);
