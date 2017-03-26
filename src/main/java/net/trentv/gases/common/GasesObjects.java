@@ -9,10 +9,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.ExistingSubstitutionException;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry.Type;
 import net.trentv.gases.Gases;
 import net.trentv.gases.client.GasesModelLoader;
 import net.trentv.gases.common.block.BlockHeated;
+import net.trentv.gases.common.block.BlockModifiedBedrock;
 import net.trentv.gases.common.gastype.GasTypeBlackDamp;
 import net.trentv.gases.common.gastype.GasTypeLightSensitive;
 import net.trentv.gasesframework.GasesFramework;
@@ -49,6 +52,7 @@ public class GasesObjects
 		registerGas(STEAM);
 		registerGas(IOCALFAEUS);
 		registerGas(BLACK_DAMP);
+		registerGas(VOID_GAS);
 		
 		registerHeatedRecipe(HEATED_IRON);
 		registerHeatedRecipe(HEATED_DIAMOND);
@@ -56,6 +60,14 @@ public class GasesObjects
 		registerHeatedRecipe(HEATED_REDSTONE);
 		registerHeatedRecipe(HEATED_LAPIS);
 		registerHeatedRecipe(HEATED_STONE);
+		
+		try
+		{
+			GameRegistry.addSubstitutionAlias("bedrock", Type.BLOCK, new BlockModifiedBedrock());
+		} catch (ExistingSubstitutionException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Nullable

@@ -21,11 +21,12 @@ public class Gases
 
 	@SidedProxy(clientSide = "net.trentv.gases.client.ClientProxy", serverSide = "net.trentv.gases.server.ServerProxy")
 	public static CommonProxy proxy;
-
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		logger = event.getModLog();
+		
 		GasesObjects.init();
 
 		proxy.registerRenderers();
