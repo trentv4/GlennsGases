@@ -36,7 +36,6 @@ public class BlockHeated extends Block
 		setSoundType(SoundType.STONE);
 		setRegistryName(new ResourceLocation(Gases.MODID, "heated_" + id));
 		setUnlocalizedName("heated_" + id);
-		setCreativeTab(GasesFramework.CREATIVE_TAB);
 		this.original = original;
 		this.refined = refined;
 		this.ruined = ruined;
