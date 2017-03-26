@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.trentv.gases.Gases;
 import net.trentv.gases.client.GasesModelLoader;
 import net.trentv.gases.common.block.BlockHeated;
+import net.trentv.gases.common.gastype.GasTypeBlackDamp;
 import net.trentv.gases.common.gastype.GasTypeLightSensitive;
 import net.trentv.gasesframework.GasesFramework;
 import net.trentv.gasesframework.api.Combustibility;
@@ -27,6 +28,7 @@ public class GasesObjects
 	public static final GasType COAL_DUST = new GasType("coal_dust", 0x000000, 2, 0, Combustibility.EXPLOSIVE).setCohesion(8).setDissipation(2, 4).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType STEAM = new GasType("steam", 0xFFFFFF, 2, 1, Combustibility.NONE).registerEntityReaction(new EntityReactionSteamBurn()).setCohesion(2).setDissipation(4, 2).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType IOCALFAEUS = new GasTypeLightSensitive("iocalfaeus", 0x5C2B77, 2, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
+	public static final GasType BLACK_DAMP = new GasTypeBlackDamp("black_damp", 0x000000, 2, 0, Combustibility.NONE).setTexture(new ResourceLocation(Gases.MODID, "block/black_damp"), false).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	public static final BlockHeated HEATED_IRON = new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron");
 	public static final BlockHeated HEATED_DIAMOND = new BlockHeated(Blocks.DIAMOND_ORE.getDefaultState(), Blocks.DIAMOND_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "diamond");
@@ -42,6 +44,7 @@ public class GasesObjects
 		registerGas(COAL_DUST);
 		registerGas(STEAM);
 		registerGas(IOCALFAEUS);
+		registerGas(BLACK_DAMP);
 		
 		registerHeatedRecipe(HEATED_IRON);
 		registerHeatedRecipe(HEATED_DIAMOND);
