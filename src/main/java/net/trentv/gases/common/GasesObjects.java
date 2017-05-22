@@ -25,16 +25,16 @@ import net.trentv.gasesframework.api.GasType;
 
 public class GasesObjects
 {
-	public static DamageSource damageSourceSteamBurn = new DamageSource("gas_steam").setDamageBypassesArmor();
-	public static DamageSource damageSourceVoid = new DamageSource("gas_void").setDamageBypassesArmor();
+	public static final DamageSource DAMAGE_SOURCE_STEAM = new DamageSource("gas_steam").setDamageBypassesArmor();
+	public static final DamageSource DAMAGE_SOURCE_VOID = new DamageSource("gas_void").setDamageBypassesArmor();
 
 	public static final GasType NATURAL_GAS = new GasType("natural", 0x6F7F6F, 2, 1, Combustibility.FLAMMABLE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType RED_GAS = new GasType("red", 0x7F0000, 2, -1, Combustibility.EXPLOSIVE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType COAL_DUST = new GasType("coal_dust", 0x000000, 2, 0, Combustibility.EXPLOSIVE).setCohesion(8).setDissipation(2, 4).setCreativeTab(GasesFramework.CREATIVE_TAB);
-	public static final GasType STEAM = new GasType("steam", 0xFFFFFF, 2, 1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(damageSourceSteamBurn, 4)).setCohesion(2).setDissipation(4, 2).setCreativeTab(GasesFramework.CREATIVE_TAB);
+	public static final GasType STEAM = new GasType("steam", 0xFFFFFF, 2, 1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(DAMAGE_SOURCE_STEAM, 4)).setCohesion(2).setDissipation(4, 2).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType IOCALFAEUS = new GasTypeLightSensitive("iocalfaeus", 0x5C2B77, 2, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType BLACK_DAMP = new GasTypeBlackDamp("black_damp", 0x000000, 2, 0, Combustibility.NONE).setTexture(new ResourceLocation(Gases.MODID, "block/black_damp"), false).setCreativeTab(GasesFramework.CREATIVE_TAB);
-	public static final GasType VOID_GAS = new GasType("void", 0x222222, 2, -1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(damageSourceVoid, 8)).setCreativeTab(GasesFramework.CREATIVE_TAB);
+	public static final GasType VOID_GAS = new GasType("void", 0x222222, 2, -1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(DAMAGE_SOURCE_VOID, 8)).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType NITROUS = new GasType("nitrous", 0x6F0000, 2, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	public static HashMap<Block, BlockHeated> heatedRecipe = new HashMap<Block, BlockHeated>();

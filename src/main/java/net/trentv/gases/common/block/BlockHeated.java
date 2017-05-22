@@ -16,11 +16,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.trentv.gases.Gases;
 import net.trentv.gases.common.RefinedState;
-import net.trentv.gasesframework.GasesFramework;
 
 public class BlockHeated extends Block
 {
-	private static final int tickRate = 100;
+	private static final int tickRate = 80;
 	public static final PropertyInteger HEAT = PropertyInteger.create("heat", 0, 9);
 	public static final PropertyEnum<RefinedState> REFINED = PropertyEnum.create("refined", RefinedState.class);
 
