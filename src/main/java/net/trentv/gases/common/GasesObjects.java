@@ -18,6 +18,7 @@ import net.trentv.gases.common.block.BlockHeated;
 import net.trentv.gases.common.block.BlockModifiedBedrock;
 import net.trentv.gases.common.gastype.GasTypeBlackDamp;
 import net.trentv.gases.common.gastype.GasTypeLightSensitive;
+import net.trentv.gases.common.reaction.EntityReactionFinine;
 import net.trentv.gasesframework.GasesFramework;
 import net.trentv.gasesframework.api.Combustibility;
 import net.trentv.gasesframework.api.GFRegistrationAPI;
@@ -36,6 +37,10 @@ public class GasesObjects
 	public static final GasType BLACK_DAMP = new GasTypeBlackDamp("black_damp", 0x000000, 2, 0, Combustibility.NONE).setTexture(new ResourceLocation(Gases.MODID, "block/black_damp"), false).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType VOID_GAS = new GasType("void", 0x222222, 2, -1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(DAMAGE_SOURCE_VOID, 8)).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType NITROUS = new GasType("nitrous", 0x6F0000, 2, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
+	public static final GasType FININE = new GasType("finine", 0xFFFFFF, 2, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB).setTexture(new ResourceLocation(Gases.MODID, "block/finine"), false).registerEntityReaction(new EntityReactionFinine());
+	//Not yet implemented
+	public static final GasType ELECTRIC = new GasType("electric", 0x000000, 2, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB);
+	public static final GasType CORROSIVE = new GasType("corrosive", 0x000000, 2, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	public static HashMap<Block, BlockHeated> heatedRecipe = new HashMap<Block, BlockHeated>();
 	public static final BlockHeated HEATED_IRON = new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron");
@@ -55,6 +60,7 @@ public class GasesObjects
 		registerGas(BLACK_DAMP);
 		registerGas(VOID_GAS);
 		registerGas(NITROUS);
+		registerGas(FININE);
 		
 		registerHeatedRecipe(HEATED_IRON);
 		registerHeatedRecipe(HEATED_DIAMOND);
