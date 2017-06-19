@@ -10,6 +10,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.trentv.gases.Gases;
 import net.trentv.gasesframework.api.GFManipulationAPI;
 
 import static net.trentv.gases.common.GasesObjects.VOID_GAS;
@@ -24,7 +25,7 @@ public class BlockModifiedBedrock extends BlockEmptyDrops
 		setSoundType(SoundType.STONE);
 		setUnlocalizedName("bedrock");
 		disableStats();
-		setRegistryName("minecraft", "bedrock");
+		setRegistryName(Gases.MODID, "bedrock");
 		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		setTickRandomly(true);
 	}

@@ -49,6 +49,8 @@ public class GasesObjects
 	public static final BlockHeated HEATED_REDSTONE = new BlockHeated(Blocks.REDSTONE_ORE.getDefaultState(), Blocks.REDSTONE_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "redstone");
 	public static final BlockHeated HEATED_LAPIS = new BlockHeated(Blocks.LAPIS_ORE.getDefaultState(), Blocks.LAPIS_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "lapis");
 	public static final BlockHeated HEATED_STONE = new BlockHeated(Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), "stone");
+	
+	public static final BlockModifiedBedrock MODIFIED_BEDROCK = new BlockModifiedBedrock();
 
 	public static void init()
 	{
@@ -71,7 +73,7 @@ public class GasesObjects
 		
 		try
 		{
-			GameRegistry.addSubstitutionAlias("bedrock", Type.BLOCK, new BlockModifiedBedrock());
+			GameRegistry.addSubstitutionAlias("bedrock", Type.BLOCK, MODIFIED_BEDROCK);
 		} catch (ExistingSubstitutionException e)
 		{
 			e.printStackTrace();
