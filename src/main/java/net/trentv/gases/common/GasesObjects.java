@@ -23,6 +23,9 @@ import net.trentv.gasesframework.GasesFramework;
 import net.trentv.gasesframework.api.Combustibility;
 import net.trentv.gasesframework.api.GFRegistrationAPI;
 import net.trentv.gasesframework.api.GasType;
+import net.trentv.gasesframework.api.reaction.entity.EntityReactionBlindness;
+import net.trentv.gasesframework.api.reaction.entity.EntityReactionSlowness;
+import net.trentv.gasesframework.api.reaction.entity.EntityReactionSuffocation;
 
 public class GasesObjects
 {
@@ -38,11 +41,16 @@ public class GasesObjects
 	public static final GasType VOID_GAS = new GasType("void", 0x222222, 16, -1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(DAMAGE_SOURCE_VOID, 8)).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType NITROUS = new GasType("nitrous", 0x6F0000, 4, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType FININE = new GasType("finine", 0xFFFFFF, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB).setTexture(new ResourceLocation(Gases.MODID, "block/finine"), false).registerEntityReaction(new EntityReactionFinine());
-	//Not yet implemented
+
+	private static final GasType[] IMPLEMENTED_GASES = new GasType[] {
+			NATURAL_GAS, RED_GAS, COAL_DUST, STEAM, IOCALFAEUS, BLACK_DAMP, 
+			VOID_GAS, NITROUS, FININE
+	};
+	
 	public static final GasType ELECTRIC = new GasType("electric", 0x000000, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType CORROSIVE = new GasType("corrosive", 0x000000, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
-	public static HashMap<Block, BlockHeated> heatedRecipe = new HashMap<Block, BlockHeated>();
+	private static final HashMap<Block, BlockHeated> HEATED_RECIPE_LIST = new HashMap<Block, BlockHeated>();
 	public static final BlockHeated HEATED_IRON = new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron");
 	public static final BlockHeated HEATED_DIAMOND = new BlockHeated(Blocks.DIAMOND_ORE.getDefaultState(), Blocks.DIAMOND_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "diamond");
 	public static final BlockHeated HEATED_GOLD = new BlockHeated(Blocks.GOLD_ORE.getDefaultState(), Blocks.GOLD_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "gold");
@@ -54,15 +62,13 @@ public class GasesObjects
 
 	public static void init()
 	{
-		registerGas(NATURAL_GAS);
-		registerGas(RED_GAS);
-		registerGas(COAL_DUST);
-		registerGas(STEAM);
-		registerGas(IOCALFAEUS);
-		registerGas(BLACK_DAMP);
-		registerGas(VOID_GAS);
-		registerGas(NITROUS);
-		registerGas(FININE);
+		for(GasType type : IMPLEMENTED_GASES)
+		{
+			type.registerEntityReaction(new EntityReactionSlowness(4));
+			type.registerEntityReaction(new EntityReactionSuffocation(2, 3));
+			type.registerEntityReaction(new EntityReactionBlindness(3));
+			registerGas(type);
+		}
 		
 		registerHeatedRecipe(HEATED_IRON);
 		registerHeatedRecipe(HEATED_DIAMOND);
@@ -79,18 +85,18 @@ public class GasesObjects
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Nullable
 	public static BlockHeated getHeated(Block block)
 	{
-		return heatedRecipe.get(block);
+		return HEATED_RECIPE_LIST.get(block);
 	}
 	
 	public static void registerHeatedRecipe(BlockHeated block)
 	{
 		registerBlock(block);
 		GasesModelLoader.registeredLocations.put(block.getRegistryName(), block);
-		heatedRecipe.put(block.original.getBlock(), block);
+		HEATED_RECIPE_LIST.put(block.original.getBlock(), block);
 	}
 	
 	private static void registerBlock(Block in)
