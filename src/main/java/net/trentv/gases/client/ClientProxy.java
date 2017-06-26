@@ -26,6 +26,7 @@ public class ClientProxy extends CommonProxy
 		{
 			setModel(a);
 		}
+		setModel(GasesObjects.WHISPERING_FOG_EMITTER);
 		ModelLoaderRegistry.registerLoader(new GasesModelLoader());
 		ModelLoader.setCustomStateMapper(GasesObjects.MODIFIED_BEDROCK, new GasesStateMapper());
 	}

@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "gases:whispering_fog_emitter" }
+    }
+}

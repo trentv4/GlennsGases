@@ -12,3 +12,7 @@ tile.heated_stone.name=Heated Stone
 tile.gas_black_damp.name=Black Damp
 tile.gas_void.name=Void Gas
 tile.gas_nitrous.name=Nitrous Gas
+tile.whispering_fog_emitter.name=Cracked Bedrock
+tile.whispering_fog.name=Whispering Fog
+tile.gas_helium.name=Helium
+tile.gas_finine.name=Finine

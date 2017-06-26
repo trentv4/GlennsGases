@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "gases:block/whispering_fog_emitter"
+    }
+}

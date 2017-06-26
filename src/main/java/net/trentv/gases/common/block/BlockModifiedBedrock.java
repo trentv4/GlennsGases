@@ -12,20 +12,24 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.trentv.gases.Gases;
 import net.trentv.gasesframework.api.GFManipulationAPI;
-
-import static net.trentv.gases.common.GasesObjects.VOID_GAS;
+import net.trentv.gasesframework.api.GasType;
 
 public class BlockModifiedBedrock extends BlockEmptyDrops
 {
-	public BlockModifiedBedrock()
+	private GasType producedGas;
+	private int producedAmount;
+	
+	public BlockModifiedBedrock(GasType producedGas, int producedAmount, String regName)
 	{
 		super(Material.ROCK);
+		this.producedGas = producedGas;
+		this.producedAmount = producedAmount;
 		setBlockUnbreakable();
 		setResistance(6000000.0F);
 		setSoundType(SoundType.STONE);
-		setUnlocalizedName("bedrock");
+		setUnlocalizedName(regName);
 		disableStats();
-		setRegistryName(Gases.MODID, "bedrock");
+		setRegistryName(Gases.MODID, regName);
 		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		setTickRandomly(true);
 	}
@@ -33,9 +37,9 @@ public class BlockModifiedBedrock extends BlockEmptyDrops
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
 		BlockPos newPos = pos.offset(EnumFacing.values()[rand.nextInt(6)]);
-		if (GFManipulationAPI.canPlaceGas(newPos, world, VOID_GAS))
+		if (GFManipulationAPI.canPlaceGas(newPos, world, producedGas))
 		{
-			GFManipulationAPI.addGasLevel(newPos, world, VOID_GAS, 1);
+			GFManipulationAPI.addGasLevel(newPos, world, producedGas, producedAmount);
 		}
 	}
 }

@@ -38,19 +38,21 @@ public class GasesObjects
 	public static final GasType STEAM = new GasType("steam", 0xFFFFFF, 12, 1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(DAMAGE_SOURCE_STEAM, 4)).setCohesion(2).setDissipation(4, 2).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType IOCALFAEUS = new GasTypeLightSensitive("iocalfaeus", 0x5C2B77, 6, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType BLACK_DAMP = new GasTypeBlackDamp("black_damp", 0x000000, 16, 0, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
-	public static final GasType VOID_GAS = new GasType("void", 0x222222, 16, -1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(DAMAGE_SOURCE_VOID, 8)).setCreativeTab(GasesFramework.CREATIVE_TAB);
+	public static final GasType VOID_GAS = new GasType("void", 0x222222, 0, -1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(DAMAGE_SOURCE_VOID, 8)).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType NITROUS = new GasType("nitrous", 0x6F0000, 4, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType FININE = new GasType("finine", 0xFFFFFF, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB).setTexture(new ResourceLocation(Gases.MODID, "block/finine"), false).registerEntityReaction(new EntityReactionFinine());
 	public static final GasType HELIUM = new GasType("helium", 0x30E3FF, 14, 0, Combustibility.NONE).setCohesion(16).setCreativeTab(GasesFramework.CREATIVE_TAB);
+	public static final GasType WHISPERING_FOG = new GasType("whispering_fog", 0x000000, 14, -1, Combustibility.HIGHLY_EXPLOSIVE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
-	private static final GasType[] IMPLEMENTED_GASES = new GasType[] { NATURAL_GAS, RED_GAS, COAL_DUST, STEAM, IOCALFAEUS, BLACK_DAMP, VOID_GAS, NITROUS, FININE, HELIUM };
+	private static final GasType[] IMPLEMENTED_GASES = new GasType[] { NATURAL_GAS, RED_GAS, COAL_DUST, STEAM, IOCALFAEUS, BLACK_DAMP, VOID_GAS, NITROUS, FININE, HELIUM, WHISPERING_FOG };
 
 	public static final GasType ELECTRIC = new GasType("electric", 0x000000, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType CORROSIVE = new GasType("corrosive", 0x000000, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	private static final HashMap<Block, BlockHeated> HEATED_RECIPE_LIST = new HashMap<Block, BlockHeated>();
 
-	public static final BlockModifiedBedrock MODIFIED_BEDROCK = new BlockModifiedBedrock();
+	public static final BlockModifiedBedrock MODIFIED_BEDROCK = new BlockModifiedBedrock(VOID_GAS, 4, "bedrock");
+	public static final BlockModifiedBedrock WHISPERING_FOG_EMITTER = (BlockModifiedBedrock) new BlockModifiedBedrock(WHISPERING_FOG, 1, "whispering_fog_emitter").setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	public static void init()
 	{
@@ -61,6 +63,8 @@ public class GasesObjects
 			type.registerEntityReaction(new EntityReactionBlindness(3));
 			registerGas(type);
 		}
+		
+		registerBlock(WHISPERING_FOG_EMITTER);
 
 		registerHeatedRecipe(new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron"));
 		registerHeatedRecipe(new BlockHeated(Blocks.DIAMOND_ORE.getDefaultState(), Blocks.DIAMOND_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "diamond"));
