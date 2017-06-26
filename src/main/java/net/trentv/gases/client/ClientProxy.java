@@ -13,6 +13,7 @@ import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.trentv.gases.common.CommonProxy;
 import net.trentv.gases.common.GasesObjects;
+import net.trentv.gases.common.block.BlockHeated;
 import net.trentv.gases.client.ClientEvents;
 
 public class ClientProxy extends CommonProxy
@@ -20,12 +21,11 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderers()
 	{
-		setModel(GasesObjects.HEATED_IRON);
-		setModel(GasesObjects.HEATED_DIAMOND);
-		setModel(GasesObjects.HEATED_GOLD);
-		setModel(GasesObjects.HEATED_REDSTONE);
-		setModel(GasesObjects.HEATED_LAPIS);
-		setModel(GasesObjects.HEATED_STONE);
+		BlockHeated[] allBlockHeated = GasesObjects.getAllHeated();
+		for(BlockHeated a : allBlockHeated)
+		{
+			setModel(a);
+		}
 		ModelLoaderRegistry.registerLoader(new GasesModelLoader());
 		ModelLoader.setCustomStateMapper(GasesObjects.MODIFIED_BEDROCK, new GasesStateMapper());
 	}

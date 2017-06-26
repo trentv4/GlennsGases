@@ -49,12 +49,6 @@ public class GasesObjects
 	public static final GasType CORROSIVE = new GasType("corrosive", 0x000000, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	private static final HashMap<Block, BlockHeated> HEATED_RECIPE_LIST = new HashMap<Block, BlockHeated>();
-	public static final BlockHeated HEATED_IRON = new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron");
-	public static final BlockHeated HEATED_DIAMOND = new BlockHeated(Blocks.DIAMOND_ORE.getDefaultState(), Blocks.DIAMOND_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "diamond");
-	public static final BlockHeated HEATED_GOLD = new BlockHeated(Blocks.GOLD_ORE.getDefaultState(), Blocks.GOLD_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "gold");
-	public static final BlockHeated HEATED_REDSTONE = new BlockHeated(Blocks.REDSTONE_ORE.getDefaultState(), Blocks.REDSTONE_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "redstone");
-	public static final BlockHeated HEATED_LAPIS = new BlockHeated(Blocks.LAPIS_ORE.getDefaultState(), Blocks.LAPIS_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "lapis");
-	public static final BlockHeated HEATED_STONE = new BlockHeated(Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), "stone");
 
 	public static final BlockModifiedBedrock MODIFIED_BEDROCK = new BlockModifiedBedrock();
 
@@ -68,12 +62,12 @@ public class GasesObjects
 			registerGas(type);
 		}
 
-		registerHeatedRecipe(HEATED_IRON);
-		registerHeatedRecipe(HEATED_DIAMOND);
-		registerHeatedRecipe(HEATED_GOLD);
-		registerHeatedRecipe(HEATED_REDSTONE);
-		registerHeatedRecipe(HEATED_LAPIS);
-		registerHeatedRecipe(HEATED_STONE);
+		registerHeatedRecipe(new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron"));
+		registerHeatedRecipe(new BlockHeated(Blocks.DIAMOND_ORE.getDefaultState(), Blocks.DIAMOND_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "diamond"));
+		registerHeatedRecipe(new BlockHeated(Blocks.GOLD_ORE.getDefaultState(), Blocks.GOLD_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "gold"));
+		registerHeatedRecipe(new BlockHeated(Blocks.REDSTONE_ORE.getDefaultState(), Blocks.REDSTONE_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "redstone"));
+		registerHeatedRecipe(new BlockHeated(Blocks.LAPIS_ORE.getDefaultState(), Blocks.LAPIS_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "lapis"));
+		registerHeatedRecipe(new BlockHeated(Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), "stone"));
 
 		try
 		{
@@ -90,6 +84,11 @@ public class GasesObjects
 		return HEATED_RECIPE_LIST.get(block);
 	}
 
+	public static BlockHeated[] getAllHeated()
+	{
+		return HEATED_RECIPE_LIST.values().toArray(new BlockHeated[HEATED_RECIPE_LIST.size()]);
+	}
+	
 	public static void registerHeatedRecipe(BlockHeated block)
 	{
 		registerBlock(block);
