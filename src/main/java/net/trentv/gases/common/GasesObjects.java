@@ -42,11 +42,8 @@ public class GasesObjects
 	public static final GasType NITROUS = new GasType("nitrous", 0x6F0000, 4, -1, Combustibility.NONE).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType FININE = new GasType("finine", 0xFFFFFF, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB).setTexture(new ResourceLocation(Gases.MODID, "block/finine"), false).registerEntityReaction(new EntityReactionFinine());
 
-	private static final GasType[] IMPLEMENTED_GASES = new GasType[] {
-			NATURAL_GAS, RED_GAS, COAL_DUST, STEAM, IOCALFAEUS, BLACK_DAMP, 
-			VOID_GAS, NITROUS, FININE
-	};
-	
+	private static final GasType[] IMPLEMENTED_GASES = new GasType[] { NATURAL_GAS, RED_GAS, COAL_DUST, STEAM, IOCALFAEUS, BLACK_DAMP, VOID_GAS, NITROUS, FININE };
+
 	public static final GasType ELECTRIC = new GasType("electric", 0x000000, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB);
 	public static final GasType CORROSIVE = new GasType("corrosive", 0x000000, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(GasesFramework.CREATIVE_TAB);
 
@@ -57,26 +54,26 @@ public class GasesObjects
 	public static final BlockHeated HEATED_REDSTONE = new BlockHeated(Blocks.REDSTONE_ORE.getDefaultState(), Blocks.REDSTONE_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "redstone");
 	public static final BlockHeated HEATED_LAPIS = new BlockHeated(Blocks.LAPIS_ORE.getDefaultState(), Blocks.LAPIS_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "lapis");
 	public static final BlockHeated HEATED_STONE = new BlockHeated(Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), "stone");
-	
+
 	public static final BlockModifiedBedrock MODIFIED_BEDROCK = new BlockModifiedBedrock();
 
 	public static void init()
 	{
-		for(GasType type : IMPLEMENTED_GASES)
+		for (GasType type : IMPLEMENTED_GASES)
 		{
 			type.registerEntityReaction(new EntityReactionSlowness(4));
 			type.registerEntityReaction(new EntityReactionSuffocation(2, 3));
 			type.registerEntityReaction(new EntityReactionBlindness(3));
 			registerGas(type);
 		}
-		
+
 		registerHeatedRecipe(HEATED_IRON);
 		registerHeatedRecipe(HEATED_DIAMOND);
 		registerHeatedRecipe(HEATED_GOLD);
 		registerHeatedRecipe(HEATED_REDSTONE);
 		registerHeatedRecipe(HEATED_LAPIS);
 		registerHeatedRecipe(HEATED_STONE);
-		
+
 		try
 		{
 			GameRegistry.addSubstitutionAlias("bedrock", Type.BLOCK, MODIFIED_BEDROCK);
@@ -85,20 +82,20 @@ public class GasesObjects
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Nullable
 	public static BlockHeated getHeated(Block block)
 	{
 		return HEATED_RECIPE_LIST.get(block);
 	}
-	
+
 	public static void registerHeatedRecipe(BlockHeated block)
 	{
 		registerBlock(block);
 		GasesModelLoader.registeredLocations.put(block.getRegistryName(), block);
 		HEATED_RECIPE_LIST.put(block.original.getBlock(), block);
 	}
-	
+
 	private static void registerBlock(Block in)
 	{
 		ItemBlock a = new ItemBlock(in);
@@ -106,7 +103,7 @@ public class GasesObjects
 		GameRegistry.register(in);
 		GameRegistry.register(a);
 	}
-	
+
 	private static void registerGas(GasType in)
 	{
 		GFRegistrationAPI.registerGasType(in, new ResourceLocation(Gases.MODID, "gas_" + in.name));

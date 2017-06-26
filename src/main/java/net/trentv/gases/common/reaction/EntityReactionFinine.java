@@ -13,21 +13,23 @@ public class EntityReactionFinine implements IEntityReaction
 	private Random random = new Random();
 
 	@Override
-	public void react(Entity e, IBlockAccess access, GasType gas, BlockPos pos) {
+	public void react(Entity e, IBlockAccess access, GasType gas, BlockPos pos)
+	{
 		BlockPos originalPosition = e.getPosition();
-		BlockPos newPosition = new BlockPos(originalPosition);			
+		BlockPos newPosition = new BlockPos(originalPosition);
 		int iterations = 0;
-		do {
+		do
+		{
 			iterations++;
 			newPosition = new BlockPos(originalPosition);
 
-			int newX = random.nextInt(16)-8;
-			int newY = random.nextInt(16)-8;
-			int newZ = random.nextInt(16)-8;
+			int newX = random.nextInt(16) - 8;
+			int newY = random.nextInt(16) - 8;
+			int newZ = random.nextInt(16) - 8;
 			newPosition = newPosition.add(newX, newY, newZ);
 
-		} while(iterations < 200 & (access.isAirBlock(pos) & access.isAirBlock(pos.up())));
+		} while (iterations < 200 & (access.isAirBlock(pos) & access.isAirBlock(pos.up())));
 
-		e.setPositionAndRotation(newPosition.getX(), newPosition.getY(), newPosition.getZ(), random.nextInt(360), random.nextInt(180)-90);
+		e.setPositionAndRotation(newPosition.getX(), newPosition.getY(), newPosition.getZ(), random.nextInt(360), random.nextInt(180) - 90);
 	}
 }

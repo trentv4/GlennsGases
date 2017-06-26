@@ -16,7 +16,7 @@ public class GasTypeLightSensitive extends GasType
 {
 	private int tickDelay = 0;
 	private static Random rand = new Random();
-	
+
 	public GasTypeLightSensitive(String name, int color, int opacity, int density, Combustibility combustability)
 	{
 		super(name, color, opacity, density, combustability);
@@ -25,14 +25,14 @@ public class GasTypeLightSensitive extends GasType
 	@Override
 	public boolean preTick(World world, IBlockState state, BlockPos p)
 	{
-		if(tickDelay-- == 0)
+		if (tickDelay-- == 0)
 		{
 			int currentGasLevel = GFManipulationAPI.getGasLevel(p, world);
-			tickDelay = 0 + (16-currentGasLevel) + rand.nextInt(8);
+			tickDelay = 0 + (16 - currentGasLevel) + rand.nextInt(8);
 			if (!world.isRemote)
 			{
 				int brightness = world.getLight(p);
-				if(brightness >= 4)
+				if (brightness >= 4)
 				{
 					int radius = 3;
 					for (int x = -radius; x < radius; x++)
@@ -45,11 +45,11 @@ public class GasTypeLightSensitive extends GasType
 								IBlockState s = world.getBlockState(pos);
 								Block a = s.getBlock();
 								BlockHeated r = GasesObjects.getHeated(a);
-								if(a instanceof BlockHeated)
+								if (a instanceof BlockHeated)
 								{
 									((BlockHeated) a).heat(world, world.getBlockState(pos), pos, (BlockHeated) a);
 								}
-								if(r != null)
+								if (r != null)
 								{
 									world.setBlockState(pos, r.getDefaultState());
 								}

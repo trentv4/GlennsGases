@@ -12,7 +12,7 @@ import net.trentv.gases.common.block.BlockHeated;
 public class GasesModelLoader implements ICustomModelLoader
 {
 	public static HashMap<ResourceLocation, BlockHeated> registeredLocations = new HashMap<ResourceLocation, BlockHeated>();
-	
+
 	@Override
 	public void onResourceManagerReload(IResourceManager resourceManager)
 	{
@@ -41,9 +41,9 @@ public class GasesModelLoader implements ICustomModelLoader
 		else
 		{
 			String[] str = res.getVariant().split(",");
-			for(String s : str)
+			for (String s : str)
 			{
-				if(s.contains("heat="))
+				if (s.contains("heat="))
 				{
 					int heat = (int) Integer.valueOf(s.replaceAll("heat=", ""));
 					return new ModelBlockHeated(heat, "block/heated/" + a.getRegistryName().getResourcePath());
@@ -52,7 +52,7 @@ public class GasesModelLoader implements ICustomModelLoader
 			return new ModelBlockHeated(7, "block/heated/" + a.getRegistryName().getResourcePath());
 		}
 	}
-	
+
 	private ResourceLocation convert(ResourceLocation in)
 	{
 		return new ResourceLocation(in.getResourceDomain(), in.getResourcePath());

@@ -7,9 +7,9 @@ public class ServerProxy extends CommonProxy
 	@Override
 	public void registerRenderers()
 	{
-		
+
 	}
-	
+
 	@Override
 	public void registerEventHandlers()
 	{

@@ -27,26 +27,27 @@ public class ClientProxy extends CommonProxy
 		ModelLoaderRegistry.registerLoader(new GasesModelLoader());
 		ModelLoader.setCustomStateMapper(GasesObjects.MODIFIED_BEDROCK, new GasesStateMapper());
 	}
-	
+
 	private void setModel(Block obj)
 	{
 		ModelLoader.setCustomModelResourceLocation(ItemBlock.REGISTRY.getObject(obj.getRegistryName()), 0, new ModelResourceLocation((obj.getRegistryName()), "inventory"));
 	}
-	
+
 	@Override
 	public void registerEventHandlers()
 	{
 		super.registerEventHandlers();
 	}
-	
+
 	private static class GasesStateMapper implements IStateMapper
 	{
 		private Map<IBlockState, ModelResourceLocation> cachedMap = new HashMap<IBlockState, ModelResourceLocation>();
-		
+
 		@Override
-		public Map<IBlockState, ModelResourceLocation> putStateModelLocations(Block blockIn) 
+		public Map<IBlockState, ModelResourceLocation> putStateModelLocations(Block blockIn)
 		{
-			if(cachedMap.isEmpty()) cachedMap.put(GasesObjects.MODIFIED_BEDROCK.getDefaultState(), new ModelResourceLocation("minecraft:bedrock"));
+			if (cachedMap.isEmpty())
+				cachedMap.put(GasesObjects.MODIFIED_BEDROCK.getDefaultState(), new ModelResourceLocation("minecraft:bedrock"));
 			return cachedMap;
 		}
 	}

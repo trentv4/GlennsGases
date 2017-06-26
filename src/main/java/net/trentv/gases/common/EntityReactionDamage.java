@@ -11,7 +11,7 @@ public class EntityReactionDamage implements IEntityReaction
 {
 	private DamageSource source;
 	private float damage;
-	
+
 	public EntityReactionDamage(DamageSource source, float damage)
 	{
 		this.source = source;

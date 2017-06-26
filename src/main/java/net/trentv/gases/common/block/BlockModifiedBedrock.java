@@ -29,13 +29,13 @@ public class BlockModifiedBedrock extends BlockEmptyDrops
 		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		setTickRandomly(true);
 	}
-	
-    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-    {
+
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+	{
 		BlockPos newPos = pos.offset(EnumFacing.values()[rand.nextInt(6)]);
-		if(GFManipulationAPI.canPlaceGas(newPos, world, VOID_GAS))
+		if (GFManipulationAPI.canPlaceGas(newPos, world, VOID_GAS))
 		{
 			GFManipulationAPI.addGasLevel(newPos, world, VOID_GAS, 1);
 		}
-    }
+	}
 }

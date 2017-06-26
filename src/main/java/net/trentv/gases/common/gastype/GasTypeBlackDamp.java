@@ -15,19 +15,19 @@ public class GasTypeBlackDamp extends GasType
 	{
 		super(name, color, opacity, density, combustability);
 	}
-	
+
 	@Override
-    public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand)
-    {
-		if(rand.nextInt(60) == 0)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand)
+	{
+		if (rand.nextInt(60) == 0)
 		{
 			double x = pos.getX() + rand.nextFloat();
 			double y = pos.getY() + rand.nextFloat();
 			double z = pos.getZ() + rand.nextFloat();
-	        world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0, 0, 0, new int[0]);
+			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0, 0, 0, new int[0]);
 		}
-    }
-	
+	}
+
 	@Override
 	public boolean preTick(World world, IBlockState state, BlockPos pos)
 	{

@@ -26,7 +26,7 @@ public class BlockHeated extends Block
 	public final IBlockState original;
 	public final IBlockState refined;
 	public final IBlockState ruined;
-	
+
 	public BlockHeated(IBlockState original, IBlockState refined, IBlockState ruined, String id)
 	{
 		super(Material.ROCK);
@@ -40,49 +40,55 @@ public class BlockHeated extends Block
 		this.ruined = ruined;
 		this.setDefaultState(blockState.getBaseState().withProperty(HEAT, 0).withProperty(REFINED, RefinedState.UNREFINED));
 	}
-	
+
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
 		world.scheduleBlockUpdate(pos, this, tickRate, 1);
 	}
-	
+
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random random)
 	{
 		int level = state.getValue(HEAT);
 		RefinedState ref = state.getValue(REFINED);
-		if(level > 1)
+		if (level > 1)
 		{
 			world.setBlockState(pos, state.withProperty(HEAT, level - 1));
 		}
 		else
 		{
-			switch(ref)
+			switch (ref)
 			{
-				case UNREFINED: world.setBlockState(pos, original); break;
-				case REFINED: world.setBlockState(pos, refined); break;
-				case RUINED: world.setBlockState(pos, ruined); break;
+				case UNREFINED:
+					world.setBlockState(pos, original);
+					break;
+				case REFINED:
+					world.setBlockState(pos, refined);
+					break;
+				case RUINED:
+					world.setBlockState(pos, ruined);
+					break;
 			}
 		}
 		world.scheduleBlockUpdate(pos, this, tickRate, 1);
 	}
-	
+
 	public void heat(World world, IBlockState state, BlockPos p, BlockHeated r)
 	{
-		if(state.getBlock() == r.original)
+		if (state.getBlock() == r.original)
 		{
 			world.setBlockState(p, r.getDefaultState().withProperty(HEAT, 0).withProperty(REFINED, RefinedState.UNREFINED));
 		}
-		else if(state.getBlock() == r)
+		else if (state.getBlock() == r)
 		{
 			int heat = state.getValue(HEAT);
-			if(heat < 5)
+			if (heat < 5)
 			{
 				world.setBlockState(p, state.withProperty(HEAT, heat + 1));
 			}
-			else if(heat == 5)
+			else if (heat == 5)
 			{
 				int addAmount = (int) Math.ceil(Math.random() * 3);
-				if(addAmount == 1)
+				if (addAmount == 1)
 				{
 					world.setBlockState(p, state.withProperty(HEAT, heat + addAmount).withProperty(REFINED, RefinedState.REFINED));
 				}
@@ -91,11 +97,11 @@ public class BlockHeated extends Block
 					world.setBlockState(p, state.withProperty(HEAT, heat + addAmount).withProperty(REFINED, RefinedState.RUINED));
 				}
 			}
-			else if(heat >= 6 & heat <= 8)
+			else if (heat >= 6 & heat <= 8)
 			{
 				world.setBlockState(p, state.withProperty(HEAT, 9).withProperty(REFINED, RefinedState.RUINED));
 			}
-			else if(heat == 9)
+			else if (heat == 9)
 			{
 				world.setBlockState(p, Blocks.LAVA.getDefaultState());
 			}
@@ -112,7 +118,7 @@ public class BlockHeated extends Block
 	{
 		return state;
 	}
-	
+
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
