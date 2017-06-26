@@ -10,31 +10,31 @@ public class CommonEvents
 	@SubscribeEvent
 	public void onBlockBreak(BlockEvent.BreakEvent event)
 	{
-		if(event.getState().getBlock() == Blocks.COAL_ORE)
+		if (event.getState().getBlock() == Blocks.COAL_ORE)
 		{
 			GFManipulationAPI.addGasLevel(event.getPos(), event.getWorld(), GasesObjects.COAL_DUST, 8);
 			event.setCanceled(true);
 		}
 	}
-	
+
 	boolean isPlayerPlaceEvent = false;
-	
+
 	// This handles water + lava creating steam as well as obsidian. BlockEvent is used
-	// because distinction is needed between a "place" event and a "reaction" event. 
+	// because distinction is needed between a "place" event and a "reaction" event.
 	// PlaceEvent will always be followed by a NeighborNotifyEvent, but a NeighborNotifyEvent
 	// is not always preceded by a PlaceEvent.
 	@SubscribeEvent
 	public void onBlockEvent(BlockEvent event)
 	{
-		if(event.getState().getBlock() == Blocks.OBSIDIAN)
+		if (event.getState().getBlock() == Blocks.OBSIDIAN)
 		{
-			if(event instanceof BlockEvent.PlaceEvent)
+			if (event instanceof BlockEvent.PlaceEvent)
 			{
 				isPlayerPlaceEvent = true;
 			}
-			if(event instanceof BlockEvent.NeighborNotifyEvent)
+			if (event instanceof BlockEvent.NeighborNotifyEvent)
 			{
-				if(isPlayerPlaceEvent)
+				if (isPlayerPlaceEvent)
 				{
 					isPlayerPlaceEvent = false; // Resetting for the next BlockEvent
 				}

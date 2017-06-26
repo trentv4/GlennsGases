@@ -10,8 +10,10 @@ import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
+import net.minecraftforge.common.MinecraftForge;
 import net.trentv.gases.common.CommonProxy;
 import net.trentv.gases.common.GasesObjects;
+import net.trentv.gases.client.ClientEvents;
 
 public class ClientProxy extends CommonProxy
 {
@@ -37,6 +39,7 @@ public class ClientProxy extends CommonProxy
 	public void registerEventHandlers()
 	{
 		super.registerEventHandlers();
+		MinecraftForge.EVENT_BUS.register(new ClientEvents());
 	}
 
 	private static class GasesStateMapper implements IStateMapper
