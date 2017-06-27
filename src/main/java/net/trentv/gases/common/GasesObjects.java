@@ -47,7 +47,7 @@ public class GasesObjects
 	public static final GasType NITROUS = new GasType("nitrous", 0x6F0000, 4, -1, Combustibility.NONE).setCreativeTab(Gases.CREATIVE_TAB);
 	public static final GasType FININE = new GasType("finine", 0xFFFFFF, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(Gases.CREATIVE_TAB).setTexture(new ResourceLocation(Gases.MODID, "block/finine"), false).registerEntityReaction(new EntityReactionFinine());
 	public static final GasType HELIUM = new GasType("helium", 0x30E3FF, 14, 0, Combustibility.NONE).setCohesion(16).setCreativeTab(Gases.CREATIVE_TAB);
-	public static final GasType WHISPERING_FOG = new GasType("whispering_fog", 0x000000, 14, -1, Combustibility.HIGHLY_EXPLOSIVE).setCreativeTab(Gases.CREATIVE_TAB);
+	public static final GasType WHISPERING_FOG = new GasType("whispering_fog", 0x000000, 15, -1, Combustibility.HIGHLY_EXPLOSIVE).setCreativeTab(Gases.CREATIVE_TAB);
 
 	private static final GasType[] IMPLEMENTED_GASES = new GasType[] { NATURAL_GAS, RED_GAS, COAL_DUST, STEAM, IOCALFAEUS, BLACK_DAMP, VOID_GAS, NITROUS, FININE, HELIUM, WHISPERING_FOG };
 
