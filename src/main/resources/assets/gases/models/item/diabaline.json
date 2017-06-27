@@ -1,0 +1,20 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "gases:item/diabaline"
+    },
+    "overrides": [
+	    {
+	        "predicate": {
+	            "glowing": 0
+	        },
+		    "model": "gases:item/diabaline_dark"
+	    },
+	    {
+	        "predicate": {
+	            "glowing": 1
+	        },
+		    "model": "gases:item/diabaline_glowing"
+	    }
+	]
+}

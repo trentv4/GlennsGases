@@ -54,6 +54,8 @@ public class GasesObjects
 	public static final BlockModifiedBedrock MODIFIED_BEDROCK = new BlockModifiedBedrock(VOID_GAS, 4, "bedrock");
 	public static final BlockModifiedBedrock WHISPERING_FOG_EMITTER = (BlockModifiedBedrock) new BlockModifiedBedrock(WHISPERING_FOG, 1, "whispering_fog_emitter").setCreativeTab(GasesFramework.CREATIVE_TAB);
 
+	public static final ItemDiabalineRefined DIABALINE_REFINED = new ItemDiabalineRefined();
+
 	public static void init()
 	{
 		for (GasType type : IMPLEMENTED_GASES)
@@ -73,6 +75,7 @@ public class GasesObjects
 		registerHeatedRecipe(new BlockHeated(Blocks.LAPIS_ORE.getDefaultState(), Blocks.LAPIS_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "lapis"));
 		registerHeatedRecipe(new BlockHeated(Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), "stone"));
 
+		GameRegistry.register(DIABALINE_REFINED);
 		try
 		{
 			GameRegistry.addSubstitutionAlias("bedrock", Type.BLOCK, MODIFIED_BEDROCK);
