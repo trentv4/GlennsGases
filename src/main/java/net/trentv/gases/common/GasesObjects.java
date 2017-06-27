@@ -18,6 +18,8 @@ import net.trentv.gases.common.block.BlockHeated;
 import net.trentv.gases.common.block.BlockModifiedBedrock;
 import net.trentv.gases.common.gastype.GasTypeBlackDamp;
 import net.trentv.gases.common.gastype.GasTypeLightSensitive;
+import net.trentv.gases.common.item.ItemDiabalineRefined;
+import net.trentv.gases.common.reaction.EntityReactionDamage;
 import net.trentv.gases.common.reaction.EntityReactionFinine;
 import net.trentv.gasesframework.GasesFramework;
 import net.trentv.gasesframework.api.Combustibility;

@@ -1,4 +1,4 @@
-package net.trentv.gases.common;
+package net.trentv.gases.common.item;
 
 import javax.annotation.Nullable;
 

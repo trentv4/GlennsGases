@@ -1,4 +1,4 @@
-package net.trentv.gases.common;
+package net.trentv.gases.common.reaction;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.DamageSource;
