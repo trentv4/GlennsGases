@@ -1,14 +1,17 @@
 package net.trentv.gases.common;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.ExistingSubstitutionException;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.Type;
@@ -19,6 +22,7 @@ import net.trentv.gases.common.block.BlockModifiedBedrock;
 import net.trentv.gases.common.gastype.GasTypeBlackDamp;
 import net.trentv.gases.common.gastype.GasTypeLightSensitive;
 import net.trentv.gases.common.item.ItemDiabalineRefined;
+import net.trentv.gases.common.item.ItemRespirator;
 import net.trentv.gases.common.reaction.EntityReactionDamage;
 import net.trentv.gases.common.reaction.EntityReactionFinine;
 import net.trentv.gasesframework.GasesFramework;
@@ -57,6 +61,8 @@ public class GasesObjects
 	public static final BlockModifiedBedrock WHISPERING_FOG_EMITTER = (BlockModifiedBedrock) new BlockModifiedBedrock(WHISPERING_FOG, 1, "whispering_fog_emitter").setCreativeTab(GasesFramework.CREATIVE_TAB);
 
 	public static final ItemDiabalineRefined DIABALINE_REFINED = new ItemDiabalineRefined();
+	public static final ItemRespirator PRIMITIVE_RESPIRATOR = new ItemRespirator(Arrays.asList(EntityReactionSlowness.class, EntityReactionSuffocation.class), EnumHelper.addArmorMaterial("primitive_respirator", Gases.MODID + ":primitive_respirator", 20, new int[] { 2, 0, 0, 0 }, 12, null, 5), "primitive_respirator", Items.COAL);
+	public static final ItemRespirator ADVANCED_RESPIRATOR = new ItemRespirator(Arrays.asList(EntityReactionSlowness.class, EntityReactionSuffocation.class, EntityReactionBlindness.class), EnumHelper.addArmorMaterial("advanced_respirator", Gases.MODID + ":advanced_respirator", 50, new int[] { 2, 0, 0, 0 }, 12, null, 5), "advanced_respirator", Items.IRON_INGOT);
 
 	public static void init()
 	{
@@ -78,6 +84,9 @@ public class GasesObjects
 		registerHeatedRecipe(new BlockHeated(Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), "stone"));
 
 		GameRegistry.register(DIABALINE_REFINED);
+		GameRegistry.register(PRIMITIVE_RESPIRATOR);
+		GameRegistry.register(ADVANCED_RESPIRATOR);
+
 		try
 		{
 			GameRegistry.addSubstitutionAlias("bedrock", Type.BLOCK, MODIFIED_BEDROCK);

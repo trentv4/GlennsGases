@@ -18,3 +18,5 @@ tile.gas_helium.name=Helium
 tile.gas_finine.name=Finine
 item.diabaline.name=Diabaline
 item.diabaline_glowing.name=Diabaline (glowing)
+item.primitive_respirator.name=Primitive Respirator
+item.advanced_respirator.name=Advanced Respirator
