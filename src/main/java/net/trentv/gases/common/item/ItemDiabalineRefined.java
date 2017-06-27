@@ -2,7 +2,6 @@ package net.trentv.gases.common.item;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
@@ -21,7 +20,7 @@ public class ItemDiabalineRefined extends Item
 	public ItemDiabalineRefined()
 	{
 		setRegistryName(Gases.MODID, "diabaline");
-		setCreativeTab(CreativeTabs.MISC);
+		setCreativeTab(Gases.CREATIVE_TAB);
 		setUnlocalizedName("diabaline");
 		addPropertyOverride(new ResourceLocation("glowing"), new IItemPropertyGetter()
 		{

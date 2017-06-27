@@ -20,6 +20,7 @@ public class ItemRespirator extends ItemArmor implements IGasEffectProtector
 	public ItemRespirator(List<Class<? extends IEntityReaction>> list, ArmorMaterial material, String name, Item repairMaterial)
 	{
 		super(material, 1, EntityEquipmentSlot.HEAD);
+		setCreativeTab(Gases.CREATIVE_TAB);
 		this.blockedReactions = list;
 		this.repairMaterial = repairMaterial;
 		setRegistryName(Gases.MODID, name);

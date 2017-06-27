@@ -2,6 +2,8 @@ package net.trentv.gases;
 
 import org.apache.logging.log4j.Logger;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -16,6 +18,8 @@ public class Gases
 {
 	public static final String MODID = "gases";
 	public static final String VERSION = "2.0.0";
+
+	public static final GasesCreativeTab CREATIVE_TAB = new GasesCreativeTab("gases");
 
 	public static Logger logger;
 
@@ -43,5 +47,19 @@ public class Gases
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		logger.info("Glenn's Gases initialized");
+	}
+
+	private static class GasesCreativeTab extends CreativeTabs
+	{
+		public GasesCreativeTab(String label)
+		{
+			super(label);
+		}
+
+		@Override
+		public ItemStack getTabIconItem()
+		{
+			return new ItemStack(GasesObjects.DIABALINE_REFINED);
+		}
 	}
 }
