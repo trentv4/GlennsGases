@@ -18,7 +18,7 @@ public class BlockModifiedBedrock extends BlockEmptyDrops
 {
 	private GasType producedGas;
 	private int producedAmount;
-	
+
 	public BlockModifiedBedrock(GasType producedGas, int producedAmount, String regName)
 	{
 		super(Material.ROCK);

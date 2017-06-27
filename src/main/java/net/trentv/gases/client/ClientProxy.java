@@ -22,7 +22,7 @@ public class ClientProxy extends CommonProxy
 	public void registerRenderers()
 	{
 		BlockHeated[] allBlockHeated = GasesObjects.getAllHeated();
-		for(BlockHeated a : allBlockHeated)
+		for (BlockHeated a : allBlockHeated)
 		{
 			setModel(a);
 		}

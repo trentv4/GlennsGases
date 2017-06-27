@@ -61,9 +61,9 @@ public class GasesObjects
 			type.registerEntityReaction(new EntityReactionSlowness(4));
 			type.registerEntityReaction(new EntityReactionSuffocation(2, 3));
 			type.registerEntityReaction(new EntityReactionBlindness(3));
-			registerGas(type);
+			GFRegistrationAPI.registerGasType(type, new ResourceLocation(Gases.MODID, "gas_" + type.name));
 		}
-		
+
 		registerBlock(WHISPERING_FOG_EMITTER);
 
 		registerHeatedRecipe(new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron"));
@@ -92,7 +92,7 @@ public class GasesObjects
 	{
 		return HEATED_RECIPE_LIST.values().toArray(new BlockHeated[HEATED_RECIPE_LIST.size()]);
 	}
-	
+
 	public static void registerHeatedRecipe(BlockHeated block)
 	{
 		registerBlock(block);
@@ -106,10 +106,5 @@ public class GasesObjects
 		a.setRegistryName(in.getRegistryName());
 		GameRegistry.register(in);
 		GameRegistry.register(a);
-	}
-
-	private static void registerGas(GasType in)
-	{
-		GFRegistrationAPI.registerGasType(in, new ResourceLocation(Gases.MODID, "gas_" + in.name));
 	}
 }
