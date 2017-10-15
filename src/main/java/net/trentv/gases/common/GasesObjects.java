@@ -8,13 +8,9 @@ import javax.annotation.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.registry.ExistingSubstitutionException;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry.Type;
 import net.trentv.gases.Gases;
 import net.trentv.gases.client.GasesModelLoader;
 import net.trentv.gases.common.block.BlockHeated;
@@ -31,6 +27,7 @@ import net.trentv.gasesframework.api.GasType;
 import net.trentv.gasesframework.api.reaction.entity.EntityReactionBlindness;
 import net.trentv.gasesframework.api.reaction.entity.EntityReactionSlowness;
 import net.trentv.gasesframework.api.reaction.entity.EntityReactionSuffocation;
+import net.trentv.registry.ModRegistry;
 
 public class GasesObjects
 {
@@ -73,7 +70,7 @@ public class GasesObjects
 			GFRegistrationAPI.registerGasType(type, new ResourceLocation(Gases.MODID, "gas_" + type.name));
 		}
 
-		registerBlock(WHISPERING_FOG_EMITTER);
+		ModRegistry.registerBlock(WHISPERING_FOG_EMITTER);
 
 		registerHeatedRecipe(new BlockHeated(Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "iron"));
 		registerHeatedRecipe(new BlockHeated(Blocks.DIAMOND_ORE.getDefaultState(), Blocks.DIAMOND_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "diamond"));
@@ -82,17 +79,8 @@ public class GasesObjects
 		registerHeatedRecipe(new BlockHeated(Blocks.LAPIS_ORE.getDefaultState(), Blocks.LAPIS_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "lapis"));
 		registerHeatedRecipe(new BlockHeated(Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), "stone"));
 
-		GameRegistry.register(DIABALINE_REFINED);
-		GameRegistry.register(PRIMITIVE_RESPIRATOR);
-		GameRegistry.register(ADVANCED_RESPIRATOR);
+		ModRegistry.registerItem(DIABALINE_REFINED, PRIMITIVE_RESPIRATOR, ADVANCED_RESPIRATOR);
 
-		try
-		{
-			GameRegistry.addSubstitutionAlias("bedrock", Type.BLOCK, MODIFIED_BEDROCK);
-		} catch (ExistingSubstitutionException e)
-		{
-			e.printStackTrace();
-		}
 	}
 
 	@Nullable
@@ -108,16 +96,8 @@ public class GasesObjects
 
 	public static void registerHeatedRecipe(BlockHeated block)
 	{
-		registerBlock(block);
+		ModRegistry.registerBlockAndItem(block);
 		GasesModelLoader.registeredLocations.put(block.getRegistryName(), block);
 		HEATED_RECIPE_LIST.put(block.original.getBlock(), block);
-	}
-
-	private static void registerBlock(Block in)
-	{
-		ItemBlock a = new ItemBlock(in);
-		a.setRegistryName(in.getRegistryName());
-		GameRegistry.register(in);
-		GameRegistry.register(a);
 	}
 }

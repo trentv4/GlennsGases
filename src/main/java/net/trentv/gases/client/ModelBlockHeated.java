@@ -5,10 +5,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Function;
 
 import org.lwjgl.util.vector.Vector3f;
-
-import com.google.common.base.Function;
 
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.BlockFaceUV;
