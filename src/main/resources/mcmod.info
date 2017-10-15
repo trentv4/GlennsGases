@@ -1,14 +1,14 @@
 [
 {
   "modid": "gases",
-  "name": "Glenn's Gases",
+  "name": "Glenn's Gases: Repressurized",
   "description": "",
   "version": "2.0.0",
-  "mcversion": "1.10.2",
+  "mcversion": "1.12",
   "url": "",
   "updateUrl": "",
   "authorList": ["Trentv4", "jamieswhiteshirt"],
-  "credits": "The Forge and FML guys, for making this example",
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

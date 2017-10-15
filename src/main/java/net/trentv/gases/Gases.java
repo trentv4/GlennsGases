@@ -46,7 +46,7 @@ public class Gases
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		logger.info("Glenn's Gases initialized");
+		logger.info("'Glenn's Gases: Repressurized' initialized");
 	}
 
 	private static class GasesCreativeTab extends CreativeTabs
