@@ -1,12 +1,38 @@
 package net.trentv.gases.common;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistry;
 import net.trentv.gasesframework.api.GFManipulationAPI;
 
 public class CommonEvents
 {
+	@SubscribeEvent
+	public void registerBlocks(RegistryEvent.Register<Block> event)
+	{
+		IForgeRegistry<Block> r = event.getRegistry();
+		System.out.println("registry");
+		r.register(GasesObjects.MODIFIED_BEDROCK);
+		r.register(GasesObjects.WHISPERING_FOG_EMITTER);
+	}
+	
+	@SubscribeEvent
+	public void registerItems(RegistryEvent.Register<Item> event)
+	{
+		ItemBlock MODIFIED_BEDROCK = new ItemBlock(GasesObjects.MODIFIED_BEDROCK);
+		MODIFIED_BEDROCK.setRegistryName(GasesObjects.MODIFIED_BEDROCK.getRegistryName());
+		event.getRegistry().register(MODIFIED_BEDROCK);
+
+		ItemBlock WHISPERING_FOG_EMITTER = new ItemBlock(GasesObjects.WHISPERING_FOG_EMITTER);
+		WHISPERING_FOG_EMITTER.setRegistryName(GasesObjects.WHISPERING_FOG_EMITTER.getRegistryName());
+		event.getRegistry().register(WHISPERING_FOG_EMITTER);
+}
+	
 	@SubscribeEvent
 	public void onBlockBreak(BlockEvent.BreakEvent event)
 	{

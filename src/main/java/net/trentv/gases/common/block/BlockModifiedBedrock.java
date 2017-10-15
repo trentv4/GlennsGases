@@ -7,6 +7,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.trentv.gases.Gases;
@@ -18,7 +19,7 @@ public class BlockModifiedBedrock extends BlockEmptyDrops
 	private GasType producedGas;
 	private int producedAmount;
 
-	public BlockModifiedBedrock(GasType producedGas, int producedAmount, String regName)
+	public BlockModifiedBedrock(GasType producedGas, int producedAmount, ResourceLocation registry)
 	{
 		super(Material.ROCK);
 		this.producedGas = producedGas;
@@ -26,12 +27,12 @@ public class BlockModifiedBedrock extends BlockEmptyDrops
 		setBlockUnbreakable();
 		setResistance(6000000.0F);
 		setSoundType(SoundType.STONE);
-		setUnlocalizedName(regName);
+		setUnlocalizedName(registry.getResourcePath());
 		disableStats();
-		setRegistryName(Gases.MODID, regName);
+		setRegistryName(registry);
 		setTickRandomly(true);
 	}
-
+	
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
 		BlockPos newPos = pos.offset(EnumFacing.values()[rand.nextInt(6)]);

@@ -33,8 +33,8 @@ public class Gases
 
 		GasesObjects.init();
 
-		proxy.registerRenderers();
 		proxy.registerEventHandlers();
+		proxy.registerRenderers();
 	}
 
 	@EventHandler
