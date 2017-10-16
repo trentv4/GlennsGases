@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.MinecraftForge;
-import net.trentv.gases.GasesRegistry;
 import net.trentv.gases.common.CommonProxy;
 import net.trentv.gases.common.GasesObjects;
 
@@ -21,7 +20,6 @@ public class ClientProxy extends CommonProxy
 	{
 		ModelLoaderRegistry.registerLoader(new GasesModelLoader());
 		ModelLoader.setCustomStateMapper(GasesObjects.MODIFIED_BEDROCK, new GasesStateMapper());
-		GasesRegistry.registerRenderers();
 	}
 
 	@Override

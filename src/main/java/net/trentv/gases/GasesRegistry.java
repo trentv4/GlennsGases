@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -39,11 +40,13 @@ public class GasesRegistry
 	}
 	
 	// Events
-	
-	public static void registerRenderers()
+	@SubscribeEvent
+	public void registerRenderers(ModelRegistryEvent event)
 	{
 		for (Item obj : items)
+		{
 			ModelLoader.setCustomModelResourceLocation(obj, 0, new ModelResourceLocation(obj.getRegistryName(), "inventory"));
+		}
 	}
 	
 	@SubscribeEvent
