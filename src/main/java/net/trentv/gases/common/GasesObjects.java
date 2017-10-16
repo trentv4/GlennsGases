@@ -12,6 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 import net.trentv.gases.Gases;
+import net.trentv.gases.GasesRegistry;
 import net.trentv.gases.client.GasesModelLoader;
 import net.trentv.gases.common.block.BlockHeated;
 import net.trentv.gases.common.block.BlockModifiedBedrock;
@@ -27,7 +28,6 @@ import net.trentv.gasesframework.api.GasType;
 import net.trentv.gasesframework.api.reaction.entity.EntityReactionBlindness;
 import net.trentv.gasesframework.api.reaction.entity.EntityReactionSlowness;
 import net.trentv.gasesframework.api.reaction.entity.EntityReactionSuffocation;
-import net.trentv.registry.ModRegistry;
 
 public class GasesObjects
 {
@@ -53,7 +53,7 @@ public class GasesObjects
 
 	private static final HashMap<Block, BlockHeated> HEATED_RECIPE_LIST = new HashMap<Block, BlockHeated>();
 
-	public static final BlockModifiedBedrock MODIFIED_BEDROCK = new BlockModifiedBedrock(VOID_GAS, 4, new ResourceLocation("minecraft", "bedrock"));
+	public static final BlockModifiedBedrock MODIFIED_BEDROCK = new BlockModifiedBedrock(VOID_GAS, 4, new ResourceLocation("minecraft:bedrock"));
 
 	public static final BlockModifiedBedrock WHISPERING_FOG_EMITTER = (BlockModifiedBedrock) new BlockModifiedBedrock(WHISPERING_FOG, 1, new ResourceLocation(Gases.MODID, "whispering_fog_emitter")).setCreativeTab(Gases.CREATIVE_TAB);
 
@@ -78,8 +78,7 @@ public class GasesObjects
 		registerHeatedRecipe(new BlockHeated(Blocks.LAPIS_ORE.getDefaultState(), Blocks.LAPIS_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState(), "lapis"));
 		registerHeatedRecipe(new BlockHeated(Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), Blocks.STONE.getDefaultState(), "stone"));
 
-		ModRegistry.registerItem(DIABALINE_REFINED, PRIMITIVE_RESPIRATOR, ADVANCED_RESPIRATOR);
-
+		GasesRegistry.registerItem(DIABALINE_REFINED, PRIMITIVE_RESPIRATOR, ADVANCED_RESPIRATOR);
 	}
 
 	@Nullable
@@ -95,7 +94,7 @@ public class GasesObjects
 
 	public static void registerHeatedRecipe(BlockHeated block)
 	{
-		ModRegistry.registerBlockAndItem(block);
+		GasesRegistry.registerBlockAndItem(block);
 		GasesModelLoader.registeredLocations.put(block.getRegistryName(), block);
 		HEATED_RECIPE_LIST.put(block.original.getBlock(), block);
 	}

@@ -10,7 +10,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.trentv.gases.Gases;
 import net.trentv.gasesframework.api.GFManipulationAPI;
 import net.trentv.gasesframework.api.GasType;
 

@@ -16,7 +16,6 @@ public class CommonEvents
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
 		IForgeRegistry<Block> r = event.getRegistry();
-		System.out.println("registry");
 		r.register(GasesObjects.MODIFIED_BEDROCK);
 		r.register(GasesObjects.WHISPERING_FOG_EMITTER);
 	}
