@@ -1,0 +1,27 @@
+itemGroup.gases=Glenn's Gases
+
+tile.gas_natural.name=Gás Natural
+tile.gas_red.name=Gás Vermelho
+tile.gas_coal_dust.name=Pó de Carvão
+tile.gas_steam.name=Vapor
+tile.gas_iocalfaeus.name=Gás Iocalfaeus
+tile.gas_black_damp.name=Molho Preto
+tile.gas_void.name=Gás do Vácuo
+tile.gas_nitrous.name=Gás Nitroso
+tile.gas_whispering_fog.name=Névoa do Sussurro
+tile.gas_helium.name=Hélio
+tile.gas_finine.name=Finine
+
+tile.heated_iron.name=Minério de Ferro Aquecido
+tile.heated_diamond.name=Minério de Diamante Aquecido
+tile.heated_gold.name=Minério de Ouro Aquecido
+tile.heated_redstone.name=Minério de Redstone Aquecido
+tile.heated_lapis.name=Minério de Lapis Lazulli Aquecido
+tile.heated_stone.name=Pedra Aquecida
+
+tile.whispering_fog_emitter.name=Rocha-Matriz Quebrada
+
+item.diabaline.name=Diabaline
+item.diabaline_glowing.name=Diabaline (reluzente)
+item.primitive_respirator.name=Respirador Primitivo
+item.advanced_respirator.name=Respirador Avançado
