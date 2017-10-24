@@ -13,7 +13,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.trentv.gases.Gases;
-import net.trentv.gasesframework.common.block.BlockGas;
+import net.trentv.gasesframework.api.GFManipulationAPI;
+import net.trentv.gasesframework.api.GasesFrameworkAPI;
 
 public class ItemDiabalineRefined extends Item
 {
@@ -24,6 +25,7 @@ public class ItemDiabalineRefined extends Item
 		setUnlocalizedName("diabaline");
 		addPropertyOverride(new ResourceLocation("glowing"), new IItemPropertyGetter()
 		{
+			@Override
 			@SideOnly(Side.CLIENT)
 			public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
 			{
@@ -52,7 +54,7 @@ public class ItemDiabalineRefined extends Item
 				for (int z = -radius; z <= radius; z++)
 				{
 					pos.setPos(x + startX, y + startY, z + startZ);
-					if (world.getBlockState(pos).getBlock() instanceof BlockGas)
+					if (GFManipulationAPI.getGasType(pos, world) != GasesFrameworkAPI.AIR)
 					{
 						return true;
 					}

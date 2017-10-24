@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.trentv.gases.common.CommonProxy;
 import net.trentv.gases.common.GasesObjects;
 
-@Mod(modid = Gases.MODID, version = Gases.VERSION, acceptedMinecraftVersions = "1.10.2", dependencies = "required-after:gasesframework")
+@Mod(modid = Gases.MODID, version = Gases.VERSION, acceptedMinecraftVersions = "1.12.2", dependencies = "required-after:gasesframework")
 public class Gases
 {
 	public static final String MODID = "gases";
