@@ -12,7 +12,7 @@ public class CommonEvents
 	{
 		if (event.getState().getBlock() == Blocks.COAL_ORE)
 		{
-			GFManipulationAPI.addGasLevel(event.getPos(), event.getWorld(), GasesObjects.COAL_DUST, 8);
+			GFManipulationAPI.addGasLevel(event.getPos(), event.getWorld(), GasesObjects.COAL_DUST, 10);
 			event.setCanceled(true);
 		}
 	}
