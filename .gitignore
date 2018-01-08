@@ -25,6 +25,7 @@ mods/
 resourcepacks/
 saves/
 /options.txt
+libs/
 
 # External tool builders
 .externalToolBuilders/

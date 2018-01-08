@@ -51,5 +51,7 @@ minecraft {
 }
 
 dependencies {
-
+	// This is gitignored. You need to gradlew build gasesframework and 
+	// pull this from the  /build/libs/ directory
+    compile files("libs/gasesframework-api.jar")
 }
