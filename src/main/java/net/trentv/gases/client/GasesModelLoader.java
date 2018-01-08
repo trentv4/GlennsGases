@@ -7,12 +7,11 @@ import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ICustomModelLoader;
 import net.minecraftforge.client.model.IModel;
+import net.trentv.gases.GasesRegistry;
 import net.trentv.gases.common.block.BlockHeated;
 
 public class GasesModelLoader implements ICustomModelLoader
 {
-	public static HashMap<ResourceLocation, BlockHeated> registeredLocations = new HashMap<ResourceLocation, BlockHeated>();
-
 	@Override
 	public void onResourceManagerReload(IResourceManager resourceManager)
 	{
@@ -22,7 +21,7 @@ public class GasesModelLoader implements ICustomModelLoader
 	@Override
 	public boolean accepts(ResourceLocation modelLocation)
 	{
-		if (registeredLocations.containsKey(convert(modelLocation)))
+		if (GasesRegistry.getRegisteredHeatedLocations().containsKey(convert(modelLocation)))
 		{
 			return true;
 		}
@@ -32,6 +31,7 @@ public class GasesModelLoader implements ICustomModelLoader
 	@Override
 	public IModel loadModel(ResourceLocation modelLocation) throws Exception
 	{
+		HashMap<ResourceLocation, BlockHeated> registeredLocations = GasesRegistry.getRegisteredHeatedLocations();
 		ModelResourceLocation res = (ModelResourceLocation) modelLocation;
 		BlockHeated a = registeredLocations.get(convert(res));
 		if ((res.getVariant().equals("inventory")))
@@ -45,7 +45,7 @@ public class GasesModelLoader implements ICustomModelLoader
 			{
 				if (s.contains("heat="))
 				{
-					int heat = (int) Integer.valueOf(s.replaceAll("heat=", ""));
+					int heat = Integer.valueOf(s.replaceAll("heat=", ""));
 					return new ModelBlockHeated(heat, "block/heated/" + a.getRegistryName().getResourcePath());
 				}
 			}

@@ -13,7 +13,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 import net.trentv.gases.Gases;
 import net.trentv.gases.GasesRegistry;
-import net.trentv.gases.client.GasesModelLoader;
 import net.trentv.gases.common.block.BlockHeated;
 import net.trentv.gases.common.block.BlockModifiedBedrock;
 import net.trentv.gases.common.gastype.GasTypeBlackDamp;
@@ -96,7 +95,7 @@ public class GasesObjects
 	public static void registerHeatedRecipe(BlockHeated block)
 	{
 		GasesRegistry.registerBlockAndItem(block);
-		GasesModelLoader.registeredLocations.put(block.getRegistryName(), block);
+		GasesRegistry.registerHeatedModel(block);
 		HEATED_RECIPE_LIST.put(block.original.getBlock(), block);
 	}
 }
