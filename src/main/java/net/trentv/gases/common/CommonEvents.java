@@ -8,12 +8,11 @@ import net.trentv.gasesframework.api.GFManipulationAPI;
 public class CommonEvents
 {
 	@SubscribeEvent
-	public void onBlockBreak(BlockEvent.BreakEvent event)
+	public void onBlockBreak(BlockEvent.HarvestDropsEvent event)
 	{
 		if (event.getState().getBlock() == Blocks.COAL_ORE)
 		{
 			GFManipulationAPI.addGasLevel(event.getPos(), event.getWorld(), GasesObjects.COAL_DUST, 10);
-			event.setCanceled(true);
 		}
 	}
 
