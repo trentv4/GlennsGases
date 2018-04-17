@@ -17,27 +17,33 @@ public class BlockModifiedBedrock extends BlockEmptyDrops
 {
 	private GasType producedGas;
 	private int producedAmount;
+	private int maxLightLevel;
 
-	public BlockModifiedBedrock(GasType producedGas, int producedAmount, ResourceLocation registry)
+	public BlockModifiedBedrock(GasType producedGas, int producedAmount, int maxLightLevel, ResourceLocation registry)
 	{
 		super(Material.ROCK);
 		this.producedGas = producedGas;
 		this.producedAmount = producedAmount;
-		setBlockUnbreakable();
+		this.maxLightLevel = maxLightLevel;
 		setResistance(6000000.0F);
 		setSoundType(SoundType.STONE);
+		setBlockUnbreakable();
 		setUnlocalizedName(registry.getResourcePath());
 		disableStats();
 		setRegistryName(registry);
 		setTickRandomly(true);
 	}
-	
+
+	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
 		BlockPos newPos = pos.offset(EnumFacing.values()[rand.nextInt(6)]);
 		if (GFManipulationAPI.canPlaceGas(newPos, world, producedGas))
 		{
-			GFManipulationAPI.addGasLevel(newPos, world, producedGas, producedAmount);
+			if (world.getLight(newPos) < maxLightLevel)
+			{
+				GFManipulationAPI.addGasLevel(newPos, world, producedGas, producedAmount);
+			}
 		}
 	}
 }

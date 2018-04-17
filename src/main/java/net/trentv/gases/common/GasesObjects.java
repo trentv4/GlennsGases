@@ -17,6 +17,7 @@ import net.trentv.gases.common.block.BlockHeated;
 import net.trentv.gases.common.block.BlockModifiedBedrock;
 import net.trentv.gases.common.gastype.GasTypeBlackDamp;
 import net.trentv.gases.common.gastype.GasTypeLightSensitive;
+import net.trentv.gases.common.gastype.GasTypeVoid;
 import net.trentv.gases.common.item.ItemDiabalineRefined;
 import net.trentv.gases.common.item.ItemRespirator;
 import net.trentv.gases.common.reaction.EntityReactionDamage;
@@ -39,7 +40,7 @@ public class GasesObjects
 	public static final GasType STEAM = new GasType("steam", 0xFFFFFF, 12, 1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(DAMAGE_SOURCE_STEAM, 4)).setCohesion(2).setDissipation(4, 2).setCreativeTab(Gases.CREATIVE_TAB);
 	public static final GasType IOCALFAEUS = new GasTypeLightSensitive("iocalfaeus", 0x5C2B77, 6, -1, Combustibility.NONE).setCreativeTab(Gases.CREATIVE_TAB);
 	public static final GasType BLACK_DAMP = new GasTypeBlackDamp("black_damp", 0x000000, 16, 0, Combustibility.NONE).setCreativeTab(Gases.CREATIVE_TAB);
-	public static final GasType VOID_GAS = new GasType("void", 0x222222, 0, -1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(DAMAGE_SOURCE_VOID, 8)).setCreativeTab(Gases.CREATIVE_TAB);
+	public static final GasType VOID_GAS = new GasTypeVoid("void", 0x222222, 0, -1, Combustibility.NONE).registerEntityReaction(new EntityReactionDamage(DAMAGE_SOURCE_VOID, 8)).setCreativeTab(Gases.CREATIVE_TAB);
 	public static final GasType NITROUS = new GasType("nitrous", 0x6F0000, 4, -1, Combustibility.NONE).setCreativeTab(Gases.CREATIVE_TAB);
 	public static final GasType FININE = new GasType("finine", 0xFFFFFF, 0, 0, Combustibility.NONE).setCohesion(8).setCreativeTab(Gases.CREATIVE_TAB).setTexture(new ResourceLocation(Gases.MODID, "block/finine"), false).registerEntityReaction(new EntityReactionFinine());
 	public static final GasType HELIUM = new GasType("helium", 0x30E3FF, 14, 0, Combustibility.NONE).setCohesion(16).setCreativeTab(Gases.CREATIVE_TAB);
@@ -52,9 +53,9 @@ public class GasesObjects
 
 	private static final HashMap<Block, BlockHeated> HEATED_RECIPE_LIST = new HashMap<Block, BlockHeated>();
 
-	public static final BlockModifiedBedrock MODIFIED_BEDROCK = new BlockModifiedBedrock(VOID_GAS, 4, new ResourceLocation("minecraft:bedrock"));
+	public static final BlockModifiedBedrock MODIFIED_BEDROCK = new BlockModifiedBedrock(VOID_GAS, 4, 5, new ResourceLocation("minecraft:bedrock"));
 
-	public static final BlockModifiedBedrock WHISPERING_FOG_EMITTER = (BlockModifiedBedrock) new BlockModifiedBedrock(WHISPERING_FOG, 1, new ResourceLocation(Gases.MODID, "whispering_fog_emitter")).setCreativeTab(Gases.CREATIVE_TAB);
+	public static final BlockModifiedBedrock WHISPERING_FOG_EMITTER = (BlockModifiedBedrock) new BlockModifiedBedrock(WHISPERING_FOG, 1, 16, new ResourceLocation(Gases.MODID, "whispering_fog_emitter")).setCreativeTab(Gases.CREATIVE_TAB);
 
 	public static final ItemDiabalineRefined DIABALINE_REFINED = new ItemDiabalineRefined();
 	public static final ItemRespirator PRIMITIVE_RESPIRATOR = new ItemRespirator(Arrays.asList(EntityReactionSlowness.class, EntityReactionSuffocation.class), EnumHelper.addArmorMaterial("primitive_respirator", Gases.MODID + ":primitive_respirator", 20, new int[] { 2, 0, 0, 0 }, 12, null, 5), "primitive_respirator", Items.COAL);
