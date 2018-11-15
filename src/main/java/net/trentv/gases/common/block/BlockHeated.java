@@ -34,18 +34,20 @@ public class BlockHeated extends Block
 		setResistance(10.0F);
 		setSoundType(SoundType.STONE);
 		setRegistryName(new ResourceLocation(Gases.MODID, "heated_" + id));
-		setUnlocalizedName("heated_" + id);
+		setTranslationKey("heated_" + id);
 		this.original = original;
 		this.refined = refined;
 		this.ruined = ruined;
 		this.setDefaultState(blockState.getBaseState().withProperty(HEAT, 0).withProperty(REFINED, RefinedState.UNREFINED));
 	}
 
+	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
 		world.scheduleBlockUpdate(pos, this, tickRate, 1);
 	}
 
+	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random random)
 	{
 		int level = state.getValue(HEAT);
@@ -114,6 +116,7 @@ public class BlockHeated extends Block
 		return new BlockStateContainer(this, HEAT, REFINED);
 	}
 
+	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos)
 	{
 		return state;

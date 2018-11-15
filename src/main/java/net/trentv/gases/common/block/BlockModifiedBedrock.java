@@ -28,10 +28,10 @@ public class BlockModifiedBedrock extends BlockEmptyDrops
 		setResistance(6000000.0F);
 		setSoundType(SoundType.STONE);
 		setBlockUnbreakable();
-		setUnlocalizedName(registry.getResourcePath());
 		disableStats();
 		setRegistryName(registry);
 		setTickRandomly(true);
+		setTranslationKey(registry.getPath());
 	}
 
 	@Override

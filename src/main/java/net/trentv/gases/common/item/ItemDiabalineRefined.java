@@ -22,7 +22,7 @@ public class ItemDiabalineRefined extends Item
 	{
 		setRegistryName(Gases.MODID, "diabaline");
 		setCreativeTab(Gases.CREATIVE_TAB);
-		setUnlocalizedName("diabaline");
+		setTranslationKey("diabaline");
 		addPropertyOverride(new ResourceLocation("glowing"), new IItemPropertyGetter()
 		{
 			@Override
@@ -34,11 +34,11 @@ public class ItemDiabalineRefined extends Item
 					BlockPos pos = entityIn.getPosition();
 					if (isGasNearby(5, entityIn.getEntityWorld(), pos.getX(), pos.getY(), pos.getZ()))
 					{
-						stack.getItem().setUnlocalizedName("diabaline_glowing");
+						stack.getItem().setTranslationKey("diabaline_glowing");
 						return 1.0f;
 					}
 				}
-				stack.getItem().setUnlocalizedName("diabaline");
+				stack.getItem().setTranslationKey("diabaline");
 				return 0.0f;
 			}
 		});

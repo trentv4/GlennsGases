@@ -57,7 +57,7 @@ public class Gases
 		}
 
 		@Override
-		public ItemStack getTabIconItem()
+		public ItemStack createIcon()
 		{
 			return new ItemStack(GasesObjects.DIABALINE_REFINED);
 		}

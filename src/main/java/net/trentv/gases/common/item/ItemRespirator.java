@@ -24,7 +24,7 @@ public class ItemRespirator extends ItemArmor implements IGasEffectProtector
 		this.blockedReactions = list;
 		this.repairMaterial = repairMaterial;
 		setRegistryName(Gases.MODID, name);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 	}
 
 	private int damageDelay = 0;
@@ -47,6 +47,7 @@ public class ItemRespirator extends ItemArmor implements IGasEffectProtector
 	/**
 	 * Return whether this item is repairable in an anvil.
 	 */
+	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
 		return (repair.getItem() == repairMaterial);
