@@ -1,0 +1,27 @@
+itemGroup.gases=Gleno Dujos
+
+tile.gas_natural.name=Gamtinės Dujos
+tile.gas_red.name=Raudonosios Dujos
+tile.gas_coal_dust.name=Anglies Dulkės
+tile.gas_steam.name=Garai
+tile.gas_iocalfaeus.name=Jocalfaeus Dujos
+tile.gas_black_damp.name=Juodasis dempas
+tile.gas_void.name=Tuštybės Dujos
+tile.gas_nitrous.name=Azoto Dujos
+tile.gas_whispering_fog.name=Šnybždantis Rūkas
+tile.gas_helium.name=Helis
+tile.gas_finine.name=Fininas
+
+tile.heated_iron.name=Užkaitusi Geležies Rūda
+tile.heated_diamond.name=Užkaitusi Deimanto Rūda
+tile.heated_gold.name=Užkaitusi Aukso Rūda
+tile.heated_redstone.name=Užkaitusi Raudonakmenio Rūda
+tile.heated_lapis.name=Užkaitusi Lazurito Rūda
+tile.heated_stone.name=Užkaituses Akmuo
+
+tile.whispering_fog_emitter.name=Praskilusi pamatinė uoliena
+
+item.diabaline.name=Diabalinas
+item.diabaline_glowing.name=Diabalinas (šviečiantis)
+item.primitive_respirator.name=Primityvus Respiratorius
+item.advanced_respirator.name=Pažangus Respiratorius
